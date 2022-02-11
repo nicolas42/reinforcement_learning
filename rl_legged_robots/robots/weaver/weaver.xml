@@ -1,0 +1,246 @@
+<mujoco model="weaver_new">
+    <compiler angle="radian"
+    balanceinertia="true" 
+    discardvisual="false" />
+    <size njmax="2000" nconmax="1000" />
+    <asset>
+        <mesh name="base_link_col" file="base_link_col.STL" />
+        <mesh name="AL_coxa_col" file="AL_coxa_col.STL" />
+        <mesh name="AL_coxat_col" file="AL_coxat_col.STL" />
+        <mesh name="AL_femur_col" file="AL_femur_col.STL" />
+        <mesh name="AL_tibia_col" file="AL_tibia_col.STL" />
+        <mesh name="AL_tarsus_col" file="AL_tarsus_col.STL" />
+        <mesh name="BL_coxa_col" file="BL_coxa_col.STL" />
+        <mesh name="BL_coxat_col" file="BL_coxat_col.STL" />
+        <mesh name="BL_femur_col" file="BL_femur_col.STL" />
+        <mesh name="BL_tibia_col" file="BL_tibia_col.STL" />
+        <mesh name="BL_tarsus_col" file="BL_tarsus_col.STL" />
+        <mesh name="CL_coxa_col" file="CL_coxa_col.STL" />
+        <mesh name="CL_coxat_col" file="CL_coxat_col.STL" />
+        <mesh name="CL_femur_col" file="CL_femur_col.STL" />
+        <mesh name="CL_tibia_col" file="CL_tibia_col.STL" />
+        <mesh name="CL_tarsus_col" file="CL_tarsus_col.STL" />
+        <mesh name="CR_coxa_col" file="CR_coxa_col.STL" />
+        <mesh name="CR_coxat_col" file="CR_coxat_col.STL" />
+        <mesh name="CR_femur_col" file="CR_femur_col.STL" />
+        <mesh name="CR_tibia_col" file="CR_tibia_col.STL" />
+        <mesh name="CR_tarsus_col" file="CR_tarsus_col.STL" />
+        <mesh name="BR_coxa_col" file="BR_coxa_col.STL" />
+        <mesh name="BR_coxat_col" file="BR_coxat_col.STL" />
+        <mesh name="BR_femur_col" file="BR_femur_col.STL" />
+        <mesh name="BR_tibia_col" file="BR_tibia_col.STL" />
+        <mesh name="BR_tarsus_col" file="BR_tarsus_col.STL" />
+        <mesh name="AR_coxa_col" file="AR_coxa_col.STL" />
+        <mesh name="AR_coxat_col" file="AR_coxat_col.STL" />
+        <mesh name="AR_femur_col" file="AR_femur_col.STL" />
+        <mesh name="AR_tibia_col" file="AR_tibia_col.STL" />
+        <mesh name="AR_tarsus_col" file="AR_tarsus_col.STL" />
+        <material name="floor_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"></material>
+    </asset>
+    <worldbody>
+        <light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"></light>
+        <geom name="floor0" pos="0.8 0.75 -0.088875" size="2.5 2.5 1" type="plane" condim="3" material="floor_mat"></geom>
+        <body name="floor0" pos="0.8 0.75 -0.088875">
+			<site name="target0" pos="0 0 0.5" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+         <body pos="1.4 -0.02 0.8">
+            <freejoint/>
+            <composite type="box" count="5 5 5" spacing="0.027">
+                <geom type="capsule" size=".015 0.02" rgba=".8 .2 .1 1" mass="0.003" contype="0" conaffinity="1"/>
+                <joint kind="main" stiffness="1 " damping="1" solreffix="-0.05 -1"/>
+                <tendon kind="main" stiffness="1"  damping="1" solreffix="-0.05 -1"/>
+            </composite>
+        </body>
+        <geom pos="0 0 0.098" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="base_link_col" />
+        <geom size="0.0125 0.045 0.0125" pos="0.16 0 0.128" quat="0.968912 0 0.247404 0" type="box" />
+        <geom size="0.01 0.005 0.005" type="box" />
+        <body name="AL_coxa" pos="0.175 0.09 0.0588" quat="0.270598 0.270598 0.653281 0.653281">
+            <inertial pos="-0.0126327 -0.0262896 -2.94089e-05" quat="0.0564082 0.714963 -0.0487185 0.695178" mass="0.10825" diaginertia="5.27407e-05 4.7765e-05 3.8334e-05" />
+            <joint name="AL_coxa_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-2 2" />
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AL_coxa_col" />
+            <body name="AL_coxat" pos="0 -0.0273 0" quat="0 0 -0.707107 0.707107">
+                <inertial pos="0.00322457 -0.0426487 1.84192e-09" quat="-0.148804 0.691272 0.148804 0.691272" mass="0.0473391" diaginertia="3.33964e-05 2.40315e-05 1.61547e-05" />
+                <joint name="AL_coxat_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AL_coxat_col" />
+                <body name="AL_femur" pos="0 -0.062 0" quat="0.707107 0 0.707107 0">
+                    <inertial pos="1.94931e-06 -0.0502731 -4.48898e-05" quat="0.707287 0.706927 0.000136588 -9.6141e-07" mass="0.161017" diaginertia="0.000285995 0.000273545 3.9552e-05" />
+                    <joint name="AL_femur_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AL_femur_col" />
+                    <body name="AL_tibia" pos="0 -0.1065 0" quat="7.20126e-11 -7.43712e-09 -0.00968217 0.999953">
+                        <inertial pos="3.17883e-05 0.0555617 0.00244989" quat="0.680385 0.732855 -0.000107638 -0.000219835" mass="0.0971762" diaginertia="0.000121187 0.000107997 2.85335e-05" />
+                        <joint name="AL_tibia_joint" pos="0 0 0" axis="0 -0.0193634 0.999813" limited="true" range="-2 2" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AL_tibia_col" />
+                        <body name="AL_tarsus" pos="0 0.0879835 0.00170398" quat="0.707074 0.00684632 -0.00684634 0.707074">
+                            <inertial pos="0.0356405 -7.22387e-09 0.00321381" quat="0.521032 0.478044 0.478044 0.521032" mass="0.0427913" diaginertia="7.84978e-05 6.97733e-05 1.25007e-05" />
+                            <joint name="AL_tarsus_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AL_tarsus_col" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="BL_coxa" pos="0 0.14 0.0588" quat="0 0 0.707107 0.707107">
+            <inertial pos="-0.0126327 -0.0262896 -2.94089e-05" quat="0.0564082 0.714963 -0.0487185 0.695178" mass="0.10825" diaginertia="5.27407e-05 4.7765e-05 3.8334e-05" />
+            <joint name="BL_coxa_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-2 2" />
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BL_coxa_col" />
+            <body name="BL_coxat" pos="0 -0.0273 0.0227" quat="0 0 0.707107 -0.707107">
+                <inertial pos="0.00322457 -0.0199487 1.84192e-09" quat="-0.148804 0.691272 0.148804 0.691272" mass="0.0473391" diaginertia="3.33964e-05 2.40315e-05 1.61547e-05" />
+                <joint name="BL_coxat_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BL_coxat_col" />
+                <body name="BL_femur" pos="0 -0.0393 0" quat="0.707107 0 0.707107 0">
+                    <inertial pos="1.94931e-06 -0.0502731 -4.48898e-05" quat="0.707287 0.706927 0.000136588 -9.61364e-07" mass="0.161017" diaginertia="0.000285995 0.000273545 3.9552e-05" />
+                    <joint name="BL_femur_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BL_femur_col" />
+                    <body name="BL_tibia" pos="0 -0.1065 0" quat="0 0 0 1">
+                        <inertial pos="3.17884e-05 0.0555988 0.00137357" quat="0.673257 0.739408 -0.000152823 -0.000178071" mass="0.0971762" diaginertia="0.000121187 0.000107997 2.85335e-05" />
+                        <joint name="BL_tibia_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BL_tibia_col" />
+                        <body name="BL_tarsus" pos="0 0.088 0" quat="0.707107 0 0 0.707107">
+                            <inertial pos="0.0356404 -7.59224e-09 0.00321381" quat="0.521032 0.478044 0.478044 0.521032" mass="0.0427913" diaginertia="7.84977e-05 6.97732e-05 1.25007e-05" />
+                            <joint name="BL_tarsus_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BL_tarsus_col" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="CL_coxa" pos="-0.175 0.09 0.0588" quat="0.270598 0.270598 -0.653281 -0.653281">
+            <inertial pos="-0.0126327 -0.0262896 -2.9409e-05" quat="0.0564082 0.714963 -0.0487185 0.695178" mass="0.10825" diaginertia="5.27407e-05 4.7765e-05 3.8334e-05" />
+            <joint name="CL_coxa_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-2 2" />
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CL_coxa_col" />
+            <body name="CL_coxat" pos="0 -0.0273 0" quat="0 0 -0.707107 0.707107">
+                <inertial pos="0.00322457 -0.0426487 1.84192e-09" quat="-0.148804 0.691272 0.148804 0.691272" mass="0.0473391" diaginertia="3.33964e-05 2.40315e-05 1.61547e-05" />
+                <joint name="CL_coxat_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CL_coxat_col" />
+                <body name="CL_femur" pos="0 -0.062 0" quat="0.707107 0 0.707107 0">
+                    <inertial pos="1.94931e-06 -0.0502731 -4.48898e-05" quat="0.707287 0.706927 0.000136588 -9.61438e-07" mass="0.161017" diaginertia="0.000285995 0.000273545 3.9552e-05" />
+                    <joint name="CL_femur_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CL_femur_col" />
+                    <body name="CL_tibia" pos="0 -0.1065 0" quat="0 0 0.707107 0.707107">
+                        <inertial pos="3.17883e-05 0.00137357 -0.0555988" quat="0.998905 0.0467761 -0.000233978 -1.78533e-05" mass="0.0971762" diaginertia="0.000121187 0.000107997 2.85335e-05" />
+                        <joint name="CL_tibia_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-2 2" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CL_tibia_col" />
+                        <body name="CL_tarsus" pos="0 0 -0.088" quat="0.5 0.5 0.5 -0.5">
+                            <inertial pos="0.0356405 -7.22385e-09 0.00321381" quat="0.521032 0.478044 0.478044 0.521032" mass="0.0427913" diaginertia="7.84978e-05 6.97733e-05 1.25007e-05" />
+                            <joint name="CL_tarsus_joint" pos="0 0 0" axis="0 0 -1" limited="true" range="-2 2" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CL_tarsus_col" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="CR_coxa" pos="-0.175 -0.09 0.0588" quat="0.270598 -0.270598 -0.653281 0.653281">
+            <inertial pos="-0.0126327 0.0262838 -2.94074e-05" quat="-0.0561364 0.714953 0.0491234 0.695182" mass="0.10825" diaginertia="5.27393e-05 4.77656e-05 3.83322e-05" />
+            <joint name="CR_coxa_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CR_coxa_col" />
+            <body name="CR_coxat" pos="0 0.0273 0" quat="0.707107 -0.707107 0 0">
+                <inertial pos="0.00322457 -0.0426487 1.8419e-09" quat="-0.148804 0.691272 0.148804 0.691272" mass="0.0473391" diaginertia="3.33964e-05 2.40315e-05 1.61547e-05" />
+                <joint name="CR_coxat_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CR_coxat_col" />
+                <body name="CR_femur" pos="0 -0.062 0" quat="0.5 -0.5 0.5 0.5">
+                    <inertial pos="1.94931e-06 4.48898e-05 -0.0502731" quat="1 -0.000254707 -9.59025e-05 9.72622e-05" mass="0.161017" diaginertia="0.000285995 0.000273545 3.9552e-05" />
+                    <joint name="CR_femur_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CR_femur_col" />
+                    <body name="CR_tibia" pos="0 0 -0.1065" quat="0 0 0.707107 0.707107">
+                        <inertial pos="3.17883e-05 -0.0555988 -0.00137357" quat="0.673257 0.739408 0.000152823 0.000178071" mass="0.0971762" diaginertia="0.000121187 0.000107997 2.85335e-05" />
+                        <joint name="CR_tibia_joint" pos="0 0 0" axis="0 0 -1" limited="true" range="-2 2" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CR_tibia_col" />
+                        <body name="CR_tarsus" pos="0 -0.088 0" quat="0 0.707107 -0.707107 0">
+                            <inertial pos="0.0356405 -6.47393e-09 0.00321381" quat="0.521032 0.478044 0.478044 0.521032" mass="0.0427913" diaginertia="7.84978e-05 6.97732e-05 1.25007e-05" />
+                            <joint name="CR_tarsus_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="CR_tarsus_col" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="BR_coxa" pos="0 -0.14 0.0588" quat="0 0 -0.707107 0.707107">
+            <inertial pos="-0.0126327 0.0262838 -2.94073e-05" quat="-0.0561364 0.714953 0.0491233 0.695182" mass="0.10825" diaginertia="5.27393e-05 4.77656e-05 3.83322e-05" />
+            <joint name="BR_coxa_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BR_coxa_col" />
+            <body name="BR_coxat" pos="0 0.0273 0.0227" quat="0.707107 -0.707107 0 0">
+                <inertial pos="0.00322457 -0.0199487 1.84193e-09" quat="-0.148804 0.691272 0.148804 0.691272" mass="0.0473391" diaginertia="3.33964e-05 2.40315e-05 1.61547e-05" />
+                <joint name="BR_coxat_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BR_coxat_col" />
+                <body name="BR_femur" pos="0 -0.0393 0" quat="0 0.707107 0 -0.707107">
+                    <inertial pos="1.94931e-06 0.0502731 4.48898e-05" quat="0.707287 0.706927 -0.000136588 9.61393e-07" mass="0.161017" diaginertia="0.000285995 0.000273545 3.9552e-05" />
+                    <joint name="BR_femur_joint" pos="0 0 0" axis="0 0 -1" limited="true" range="-2 2" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BR_femur_col" />
+                    <body name="BR_tibia" pos="0 0.1065 0" quat="0 0 0 1">
+                        <inertial pos="3.17884e-05 -0.0555988 -0.00137357" quat="0.673257 0.739408 0.000152823 0.000178071" mass="0.0971762" diaginertia="0.000121187 0.000107997 2.85335e-05" />
+                        <joint name="BR_tibia_joint" pos="0 0 0" axis="0 0 -1" limited="true" range="-2 2" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BR_tibia_col" />
+                        <body name="BR_tarsus" pos="0 -0.088 0" quat="0 -0.707107 0.707107 0">
+                            <inertial pos="0.0356418 -3.76652e-08 0.00321379" quat="0.521029 0.478046 0.478046 0.521031" mass="0.0427918" diaginertia="7.85042e-05 6.97796e-05 1.25008e-05" />
+                            <joint name="BR_tarsus_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="BR_tarsus_col" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="AR_coxa" pos="0.175 -0.09 0.0588" quat="0.270598 -0.270598 0.653281 -0.653281">
+            <inertial pos="-0.0126327 0.0262838 -2.94074e-05" quat="-0.0561364 0.714953 0.0491234 0.695182" mass="0.10825" diaginertia="5.27393e-05 4.77656e-05 3.83322e-05" />
+            <joint name="AR_coxa_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AR_coxa_col" />
+            <body name="AR_coxat" pos="0 0.0273 0" quat="0.707107 -0.707107 0 0">
+                <inertial pos="0.00322457 -0.0426487 1.84192e-09" quat="-0.148804 0.691272 0.148804 0.691272" mass="0.0473391" diaginertia="3.33964e-05 2.40315e-05 1.61547e-05" />
+                <joint name="AR_coxat_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2 2" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AR_coxat_col" />
+                <body name="AR_femur" pos="0 -0.062 0" quat="0.5 0.5 0.5 -0.5">
+                    <inertial pos="1.94931e-06 -4.48898e-05 0.0502731" quat="1 -0.000254708 9.59025e-05 -9.72622e-05" mass="0.161017" diaginertia="0.000285995 0.000273545 3.9552e-05" />
+                    <joint name="AR_femur_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-2 2" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AR_femur_col" />
+                    <body name="AR_tibia" pos="0 0 0.1065" quat="0 0 -0.707107 0.707107">
+                        <inertial pos="3.17883e-05 -0.0555988 -0.00137357" quat="0.673257 0.739408 0.000152823 0.000178071" mass="0.0971762" diaginertia="0.000121187 0.000107997 2.85335e-05" />
+                        <joint name="AR_tibia_joint" pos="0 0 0" axis="0 0 -1" limited="true" range="-2 2" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AR_tibia_col" />
+                        <body name="AR_tarsus" pos="0 -0.088 0" quat="0 0.707107 -0.707107 0">
+                            <inertial pos="0.0356405 -7.22387e-09 0.00321381" quat="0.521032 0.478044 0.478044 0.521032" mass="0.0427913" diaginertia="7.84978e-05 6.97733e-05 1.25007e-05" />
+                            <joint name="AR_tarsus_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2 2" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="AR_tarsus_col" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <position name='AR_coxa_mtr' joint="AR_coxa_joint"/>
+        <position name='AR_coxat_mtr' joint="AR_coxat_joint"/>
+        <position name='AR_femur_mtr' joint="AR_femur_joint"/>
+        <position name='AR_tibia_mtr' joint="AR_tibia_joint"/>
+        <position name='AR_tarsus_mtr' joint="AR_tarsus_joint"/>
+        
+        <position name='BR_coxa_mtr' joint="BR_coxa_joint"/>
+        <position name='BR_coxat_mtr' joint="BR_coxat_joint"/>
+        <position name='BR_femur_mtr' joint="BR_femur_joint"/>
+        <position name='BR_tibia_mtr' joint="BR_tibia_joint"/>
+        <position name='BR_tarsus_mtr' joint="BR_tarsus_joint"/>
+
+        <position name='CR_coxa_mtr' joint="CR_coxa_joint"/>
+        <position name='CR_coxat_mtr' joint="CR_coxat_joint"/>
+        <position name='CR_femur_mtr' joint="CR_femur_joint"/>
+        <position name='CR_tibia_mtr' joint="CR_tibia_joint"/>
+        <position name='CR_tarsus_mtr' joint="CR_tarsus_joint"/>
+
+        <position name='AL_coxa_mtr' joint="AL_coxa_joint"/>
+        <position name='AL_coxat_mtr' joint="AL_coxat_joint"/>
+        <position name='AL_femur_mtr' joint="AL_femur_joint"/>
+        <position name='AL_tibia_mtr' joint="AL_tibia_joint"/>
+        <position name='AL_tarsus_mtr' joint="AL_tarsus_joint"/>
+        
+        <position name='BL_coxa_mtr' joint="BL_coxa_joint"/>
+        <position name='BL_coxat_mtr' joint="BL_coxat_joint"/>
+        <position name='BL_femur_mtr' joint="BL_femur_joint"/>
+        <position name='BL_tibia_mtr' joint="BL_tibia_joint"/>
+        <position name='BL_tarsus_mtr' joint="BL_tarsus_joint"/>
+
+        <position name='CL_coxa_mtr' joint="CL_coxa_joint"/>
+        <position name='CL_coxat_mtr' joint="CL_coxat_joint"/>
+        <position name='CL_femur_mtr' joint="CL_femur_joint"/>
+        <position name='CL_tibia_mtr' joint="CL_tibia_joint"/>
+        <position name='CL_tarsus_mtr' joint="CL_tarsus_joint"/>
+    </actuator>
+</mujoco>

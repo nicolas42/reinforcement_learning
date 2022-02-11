@@ -1,0 +1,431 @@
+WARNING:tensorflow:From run.py:31: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From run.py:46: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.InteractiveSession is deprecated. Please use tf.compat.v1.InteractiveSession instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From run.py:31: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From run.py:31: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From run.py:31: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+pybullet build time: Jun 22 2021 02:25:54
+WARNING:tensorflow:From run.py:46: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.InteractiveSession is deprecated. Please use tf.compat.v1.InteractiveSession instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From run.py:46: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.InteractiveSession is deprecated. Please use tf.compat.v1.InteractiveSession instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+Logging to /home/nick/results/hexapod/latest/hex/test/
+pybullet build time: Jun 22 2021 02:25:54
+pybullet build time: Jun 22 2021 02:25:54
+WARNING:tensorflow:From run.py:46: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.InteractiveSession is deprecated. Please use tf.compat.v1.InteractiveSession instead.
+
+WARNING:tensorflow:From run.py:47: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+pybullet build time: Jun 22 2021 02:25:54
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:241: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:441: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.AUTO_REUSE is deprecated. Please use tf.compat.v1.AUTO_REUSE instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:17: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:34: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:41: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:67: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/layers/core.py:187: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:241: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+pdparam Tensor("hexapod/concat:0", shape=(?, 36), dtype=float32)
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:441: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/distributions.py:251: The name tf.random_normal is deprecated. Please use tf.random.normal instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.AUTO_REUSE is deprecated. Please use tf.compat.v1.AUTO_REUSE instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:17: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:34: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.get_collection is deprecated. Please use tf.compat.v1.get_collection instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:33: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:41: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:67: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/layers/core.py:187: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:175: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:241: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:441: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.AUTO_REUSE is deprecated. Please use tf.compat.v1.AUTO_REUSE instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:17: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:34: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:41: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:67: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/layers/core.py:187: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:241: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:441: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+pdparam Tensor("hexapod/concat:0", shape=(?, 36), dtype=float32)
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.AUTO_REUSE is deprecated. Please use tf.compat.v1.AUTO_REUSE instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/distributions.py:251: The name tf.random_normal is deprecated. Please use tf.random.normal instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:17: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.get_collection is deprecated. Please use tf.compat.v1.get_collection instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:33: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:34: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:41: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:67: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/layers/core.py:187: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+pdparam Tensor("hexapod/concat:0", shape=(?, 36), dtype=float32)
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/distributions.py:251: The name tf.random_normal is deprecated. Please use tf.random.normal instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:175: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.get_collection is deprecated. Please use tf.compat.v1.get_collection instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:33: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:175: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+pdparam Tensor("hexapod/concat:0", shape=(?, 36), dtype=float32)
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/distributions.py:251: The name tf.random_normal is deprecated. Please use tf.random.normal instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.get_collection is deprecated. Please use tf.compat.v1.get_collection instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:33: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:175: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:44: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, there are two
+    options available in V2.
+    - tf.py_function takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    - tf.numpy_function maintains the semantics of the deprecated tf.py_func
+    (it is not differentiable, and manipulates numpy arrays). It drops the
+    stateful argument making all functions stateful.
+    
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:44: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, there are two
+    options available in V2.
+    - tf.py_function takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    - tf.numpy_function maintains the semantics of the deprecated tf.py_func
+    (it is not differentiable, and manipulates numpy arrays). It drops the
+    stateful argument making all functions stateful.
+    
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:44: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, there are two
+    options available in V2.
+    - tf.py_function takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    - tf.numpy_function maintains the semantics of the deprecated tf.py_func
+    (it is not differentiable, and manipulates numpy arrays). It drops the
+    stateful argument making all functions stateful.
+    
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:44: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, there are two
+    options available in V2.
+    - tf.py_function takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    - tf.numpy_function maintains the semantics of the deprecated tf.py_func
+    (it is not differentiable, and manipulates numpy arrays). It drops the
+    stateful argument making all functions stateful.
+    
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:266: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:266: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:267: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:267: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:266: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:266: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:267: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:267: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_utils.py:29: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_utils.py:29: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_utils.py:29: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_utils.py:29: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From run.py:72: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From run.py:72: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From run.py:72: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From run.py:72: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+********** Iteration 0 ************
+------------------------------
+| adv            | -2.62e-10 |
+| approxkl       | 0.0368    |
+| clipfrac       | 0.445     |
+| cliprange      | 0.2       |
+| EpLenMean      | 20.8      |
+| EpRewMean      | 1.44      |
+| EpThisIter     | 100       |
+| learning_rate  | 0.0003    |
+| LearningRate   | 0.0003    |
+| policy_entropy | 25.5      |
+| policy_loss    | -0.0562   |
+| ratio          | 0.986     |
+| std            | 0.998     |
+| TimeStepsSoFar | 0         |
+| TimeThisIter   | 13.9      |
+| value_loss     | 0.0293    |
+------------------------------
+********** Iteration 1 ************
+-----------------------------
+| adv            | 1.11e-09 |
+| approxkl       | 0.0531   |
+| clipfrac       | 0.526    |
+| cliprange      | 0.2      |
+| EpLenMean      | 20.8     |
+| EpRewMean      | 1.84     |
+| EpThisIter     | 100      |
+| learning_rate  | 0.0003   |
+| LearningRate   | 0.0003   |
+| policy_entropy | 25.4     |
+| policy_loss    | -0.0747  |
+| ratio          | 0.977    |
+| std            | 0.994    |
+| TimeStepsSoFar | 8.14e+03 |
+| TimeThisIter   | 11.3     |
+| value_loss     | 0.0329   |
+-----------------------------
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 3 with PID 0 on node nicks-matebook exited on signal 15 (Terminated).
+--------------------------------------------------------------------------
+pybullet build time: Jun 22 2021 02:25:54
+pybullet build time: Jun 22 2021 02:25:54
+pybullet build time: Jun 22 2021 02:25:54
+pybullet build time: Jun 22 2021 02:25:54
+/home/nick/student-project---nicolas-schmidt/hexapod/motion_imitation/robots/a1.py:104: RuntimeWarning: invalid value encountered in arccos
+  (2 * l_low * l_up))
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+/home/nick/student-project---nicolas-schmidt/hexapod/motion_imitation/robots/a1.py:104: RuntimeWarning: invalid value encountered in arccos
+  (2 * l_low * l_up))
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+Traceback (most recent call last):
+  File "run5.py", line 194, in <module>
+    run(args)
+  File "run5.py", line 37, in run
+    shutil.copytree(output_path, temporary_path)
+  File "/usr/lib/python3.7/shutil.py", line 324, in copytree
+    os.makedirs(dst)
+  File "/usr/lib/python3.7/os.py", line 223, in makedirs
+    mkdir(name, mode)
+FileExistsError: [Errno 17] File exists: './tmp/20210913_124406/'
+WARNING:tensorflow:From run5.py:48: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From run5.py:63: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From run5.py:64: The name tf.InteractiveSession is deprecated. Please use tf.compat.v1.InteractiveSession instead.
+
+WARNING:tensorflow:From run5.py:64: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+argv[0]=
+/home/nick/student-project---nicolas-schmidt/hexapod/motion_imitation/robots/a1.py:104: RuntimeWarning: invalid value encountered in arccos
+  (2 * l_low * l_up))
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+Traceback (most recent call last):
+  File "run5.py", line 194, in <module>
+    run(args)
+  File "run5.py", line 37, in run
+    shutil.copytree(output_path, temporary_path)
+  File "/usr/lib/python3.7/shutil.py", line 324, in copytree
+    os.makedirs(dst)
+  File "/usr/lib/python3.7/os.py", line 223, in makedirs
+    mkdir(name, mode)
+FileExistsError: [Errno 17] File exists: './tmp/20210913_124406/'
+/home/nick/student-project---nicolas-schmidt/hexapod/motion_imitation/robots/a1.py:104: RuntimeWarning: invalid value encountered in arccos
+  (2 * l_low * l_up))
+/home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_adam_optimizer.py:9: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+Traceback (most recent call last):
+  File "run5.py", line 194, in <module>
+    run(args)
+  File "run5.py", line 37, in run
+    shutil.copytree(output_path, temporary_path)
+  File "/usr/lib/python3.7/shutil.py", line 324, in copytree
+    os.makedirs(dst)
+  File "/usr/lib/python3.7/os.py", line 223, in makedirs
+    mkdir(name, mode)
+FileExistsError: [Errno 17] File exists: './tmp/20210913_124406/'
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:241: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/utils.py:441: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:129: The name tf.AUTO_REUSE is deprecated. Please use tf.compat.v1.AUTO_REUSE instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:17: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:34: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/mpi_running_mean_std.py:41: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:67: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/layers/core.py:187: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+pdparam Tensor("quadruped/concat:0", shape=(?, 24), dtype=float32)
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/scripts/distributions.py:251: The name tf.random_normal is deprecated. Please use tf.random.normal instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.get_collection is deprecated. Please use tf.compat.v1.get_collection instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:31: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/base.py:33: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/hexapod/models/ppo.py:175: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+WARNING:tensorflow:From /home/nick/student-project---nicolas-schmidt/env37/lib/python3.7/site-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 0 on node nicks-matebook exited on signal 15 (Terminated).
+--------------------------------------------------------------------------

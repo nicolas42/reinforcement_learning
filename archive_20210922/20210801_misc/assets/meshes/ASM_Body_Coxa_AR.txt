@@ -1,0 +1,36 @@
+Mass properties of ASM_Body
+     Configuration: AR
+     Coordinate system: URDF_COORD_Body_coxa
+
+Mass = 1496.48 grams
+
+Volume = 672991.80 cubic millimeters
+
+Surface area = 216127.72  square millimeters
+
+Center of mass: ( millimeters )
+	X = -57.87
+	Y = -90.98
+	Z = -23.47
+
+Principal axes of inertia and principal moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass.
+	 Ix = ( 0.96, -0.21,  0.15)   	Px = 2238091.80
+	 Iy = ( 0.25,  0.94, -0.24)   	Py = 4107375.43
+	 Iz = (-0.09,  0.27,  0.96)   	Pz = 4407677.34
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 2370583.93	Lxy = -379477.08	Lxz = 302524.66
+	Lyx = -379477.08	Lyy = 4043816.82	Lyz = -140247.56
+	Lzx = 302524.66	Lzy = -140247.56	Lzz = 4338743.82
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the output coordinate system.
+	Ixx = 15580726.48	Ixy = 7499254.13	Ixz = 2335041.36
+	Iyx = 7499254.13	Iyy = 9879829.12	Iyz = 3054993.64
+	Izx = 2335041.36	Izy = 3054993.64	Izz = 21736313.15
+
+One or more components have overridden mass properties:
+	ASM_P170v4
+	ASM_Inductor_Mount

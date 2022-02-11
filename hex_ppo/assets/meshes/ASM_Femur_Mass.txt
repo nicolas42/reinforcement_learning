@@ -1,0 +1,37 @@
+Mass properties of ASM_Femur
+     Configuration: Default
+     Coordinate system: URDF_Coord_Femur
+
+Mass = 1597.36 grams
+
+Volume = 1217573.44 cubic millimeters
+
+Surface area = 348267.60  square millimeters
+
+Center of mass: ( millimeters )
+	X = 99.68
+	Y = 26.32
+	Z = 0.17
+
+Principal axes of inertia and principal moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass.
+	 Ix = ( 1.00, -0.03,  0.01)   	Px = 2199229.92
+	 Iy = (-0.03, -1.00,  0.03)   	Py = 8609005.74
+	 Iz = ( 0.01, -0.03, -1.00)   	Pz = 9241354.29
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 2205462.64	Lxy = -188518.89	Lxz = 68743.75
+	Lyx = -188518.89	Lyy = 8604088.15	Lyz = -22011.49
+	Lzx = 68743.75	Lzy = -22011.49	Lzz = 9240039.17
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the output coordinate system.
+	Ixx = 3312432.83	Ixy = 4003099.23	Ixz = 96192.50
+	Iyx = 4003099.23	Iyy = 24476664.25	Iyz = -14762.83
+	Izx = 96192.50	Izy = -14762.83	Izz = 26219490.52
+
+One or more components have overridden mass properties:
+	ASM_P170v4
+	ASM_Bearing_Unit_V2.0
+	ASM_Bearing_Unit_V2.0

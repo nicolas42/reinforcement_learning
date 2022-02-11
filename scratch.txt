@@ -1,0 +1,1857 @@
+  def done(self, env):
+    """Checks if the episode is over.
+
+       If the robot base becomes unstable (based on orientation), the episode
+       terminates early.
+    """
+    # exit if robot is unstable
+    rot_quat = env.robot.GetBaseOrientation()
+    rot_mat = env.pybullet_client.getMatrixFromQuaternion(rot_quat)
+    # print(rot_mat)
+    if rot_mat[-1] < 0.85:
+      return 1
+
+    # my more lenient done function
+    # rot_quat = env.robot.GetBaseOrientation()
+    # euler_angles = env.pybullet_client.getEulerFromQuaternion(rot_quat)
+    # print(euler_angles)
+    # diff_angles = np.array(euler_angles) - np.array([math.pi / 2.0, 0, math.pi / 2.0])
+    # return abs(diff_angles[0]) > (math.pi / 2)
+
+
+    # terminate if deviates more than 90 degrees
+    # # transform z euler angle rotation so it starts at zero when robot is facing the +x direction
+    # uid = env.robot.quadruped
+    # pyb = env._pybullet_client
+    # position, orientation = pyb.getBasePositionAndOrientation(uid)
+    # orientation = pyb.getEulerFromQuaternion(orientation)
+    # rot = orientation[2]
+    # rot -= math.pi/2 
+    # if rot < -math.pi:
+    #   rot += 2*math.pi 
+    # if abs(rot) > math.pi/4:
+    #     return 1
+    
+    return 0
+
+
+    
+
+# def calculate_reward(self, env):
+#   """Get the reward without side effects."""
+
+#   uid = env.robot.quadruped
+#   pyb = env._pybullet_client
+
+#   base_velocity,_ = pyb.getBaseVelocity(uid)
+#   z = self.current_base_pos[2]
+#   diff_motor_angles = self.current_motor_angles-self.last_motor_angles
+#   diff_position = np.array(self.current_base_pos)-np.array(self.last_base_pos)
+#   diff_orientation = np.array(self.current_base_orientation)-np.array(self.last_base_orientation)
+
+#   # Energy
+#   E = np.exp(-env.robot.GetEnergyConsumptionPerControlStep())
+#   # Height
+#   H = np.exp(-10000*(z-0.45)**4)-0.05
+#   # Velocity: 
+#   V = np.exp(-50*(base_velocity[0]-1)**2)-0.02
+
+#   # Orientation
+#   position, orientation = pyb.getBasePositionAndOrientation(uid)
+#   orientation = pyb.getEulerFromQuaternion(orientation)
+#   rot = orientation[2]
+#   rot -= math.pi/2 
+#   if rot < -math.pi:
+#     rot += 2*math.pi 
+#   O = np.exp(-5*rot**2)-0.05
+
+#   # Symmetry
+#   joints = np.array(self.current_motor_angles)
+#   S = np.exp( -np.var(joints[[0,3,6,9]]) -np.var(joints[[1,4,7,10]]) -np.var(joints[[2,5,8,11]]) )
+
+#   print({ "energy": E, "height": H, "orientation": O, "velocity": V, "symmetry": S })
+  
+#   reward = E + H + O + V + S
+#   del env
+#   return reward
+
+
+
+
+
+
+
+# --------------------------------------------------------
+
+
+    # uid = env.robot.quadruped
+    # pyb = env._pybullet_client
+
+    # # root_vel_sim, root_ang_vel_sim = pyb.getBaseVelocity(uid)
+    # # reward = np.array(root_vel_sim).dot(np.array([1,0,0]))
+
+    # base_velocity,_ = pyb.getBaseVelocity(uid)
+    # z = self.current_base_pos[2]
+    # diff_motor_angles = self.current_motor_angles-self.last_motor_angles
+    # diff_position = np.array(self.current_base_pos)-np.array(self.last_base_pos)
+    # diff_orientation = np.array(self.current_base_orientation)-np.array(self.last_base_orientation)
+    
+    # # Stay still
+    # # seems like a valuable curriculum
+    # # reward = np.exp(-10*(np.dot(self.current_base_pos,self.current_base_pos)))
+
+    # # minimize energy v1
+    # # minimize energy through minimizing differences of motor angles
+    # # energy_reward = np.exp(-25*np.dot(diff_motor_angles,diff_motor_angles))
+    # # motor angle differences range 0..0.2 and there are 12 of them.    
+    
+    # # energy, height, velocity, orientation, symmetry
+
+    # # Minimize Energy
+    # E = 10 * np.exp(-env.robot.GetEnergyConsumptionPerControlStep())
+
+    # # Height
+    # H = np.exp(-10000*(z-0.45)**4)-0.05
+    # # inspection of mocap indicates z between 0.4 and 0.5 is good.
+    # # z~=0.2 is lying down which we don't want.
+    # # this provides a reasonably square reward for z above 0.3 and below 0.6
+    # # outside of this it is slightly negative
+
+    # # Velocity: 
+    # # aim to go 1 m/s
+    # # big normal distribution which goes slightly negative outside of 0..1.8 m/s
+    # V = np.exp(-50*(base_velocity[0]-1)**2)-0.02
+
+    # # Maintain Orientation
+    # # rot_quat = env.robot.GetBaseOrientation()
+    # # position, orientation = pyb.getBasePositionAndOrientation(uid)
+    # # orientation = pyb.getEulerFromQuaternion(orientation)
+    # # diff_orientation = np.array(orientation) - np.array([math.pi / 2.0, 0, math.pi / 2.0])
+    # # O = np.exp(-np.dot(diff_orientation, diff_orientation))
+    # # initial_orientation = np.array([math.pi / 2.0, 0, math.pi / 2.0])
+
+    # # Orientation
+    # # transform z euler angle rotation so it starts at zero when robot is facing the +x direction
+    # position, orientation = pyb.getBasePositionAndOrientation(uid)
+    # orientation = pyb.getEulerFromQuaternion(orientation)
+    # rot = orientation[2]
+    # rot -= math.pi/2 
+    # if rot < -math.pi:
+    #   rot += 2*math.pi 
+    # # print(rot)
+
+    # # Orientation reward
+    # O = np.exp(-5*rot**2)-0.05
+
+
+    # # Symmetry
+    # # rewards corresponding joints from different legs having similar angles
+    # # there's 12 motors, front right front left rear right rear left
+    # # hip, upper leg, lower leg
+    # joints = np.array(self.current_motor_angles)
+    # S = np.exp( -np.var(joints[[0,3,6,9]]) -np.var(joints[[1,4,7,10]]) -np.var(joints[[2,5,8,11]]) )
+
+
+
+    # print({ "energy": E, "height": H, "orientation": O, "velocity": V, "symmetry": S })
+    
+    # reward = O
+    # del env
+    # return reward
+
+    # # h = max(0, np.exp(-100*(z-0.42)**2) ) 
+    # # H = 2 * ( 1/(10*abs(z-0.42)+1) -1/2) 
+    # # spikey height reward at 0.42 which is negative outside of 0.3..0.5
+
+
+
+
+
+
+
+
+
+# def calculate_reward(self, env):
+#     uid = env.robot.quadruped
+#     pyb = env._pybullet_client
+
+#     base_velocity,_ = pyb.getBaseVelocity(uid)
+#     z = self.current_base_pos[2]
+#     # diff_motor_angles = self.current_motor_angles-self.last_motor_angles
+#     # diff_position = np.array(self.current_base_pos)-np.array(self.last_base_pos)
+#     # diff_orientation = np.array(self.current_base_orientation)-np.array(self.last_base_orientation)
+
+
+#     default_initial_orientation = pyb.getQuaternionFromEuler([math.pi / 2.0, 0, math.pi / 2.0])
+#     position, orientation = pyb.getBasePositionAndOrientation(uid)
+#     orientation = pyb.getEulerFromQuaternion(orientation)
+#     # using euler angles so it's janky.  but don't know how to use quaternions yet
+#     yaw = orientation[2]
+#     yaw -= math.pi/2 
+#     if yaw < -math.pi:
+#       yaw += 2*math.pi 
+
+#     roll = orientation[0]
+#     roll -= math.pi/2 
+#     if roll < -math.pi:
+#       roll += 2*math.pi 
+
+#     joints = np.array(self.current_motor_angles)
+#     # Stay still
+#     # pos = np.array(self.current_base_pos)
+#     # V = np.exp(-np.dot(pos,pos))
+
+#     # maintain stability
+#     # reward orientation stability
+#     # initial_orientation = np.array([math.pi / 2.0, 0, math.pi / 2.0])
+#     # try to keep within 45 degrees
+#     # O2 = np.exp(-np.dot( np.array(orientation) - initial_orientation))
+
+#     # reward based on distance from point?
+#     # reward equals change in distance
+
+#     # Energy - avoid spasmodic tendencies, less is more
+#     E = 5*(np.exp(-env.robot.GetEnergyConsumptionPerControlStep()))
+  
+#     # Height - don't lie don't and flail your legs
+#     # H = (np.exp(-1000*(z-0.5)**4)-0.05)
+#     H = 1*(2*( 1/(1+np.exp(-100*(z-0.3))) -1/2 )) # sigmoid, above 0.3m is good.
+
+#     # Orientation - don't run sideways, torso yaw
+#     # Keep z euler angle constant
+#     O = 1*(2*(np.exp(-3*yaw**2)-1/2)) # +-30 degrees is positive
+#     O = 1*(1-1.3*abs(yaw)) #+-45 degrees is positive
+#     O = 1*(2*( 1/(1+2*abs(yaw)) -1/2))
+#     # O = 0  
+
+#     # Orientation - torso roll
+#     O2 = 1*(2*( 1/(1+2*abs(roll)) -1/2))
+#     # O = 0  
+
+#     # Velocity - go that way
+#     V = 1*(base_velocity[0]) 
+#     # V = 0
+#     # V = 10*(np.exp(-0.45*(base_velocity[0]-3)**2)-0.02)
+#     # V = 50*(1/(1+np.exp(-0.1*base_velocity[0])) - 1/2) # s-curve, max 10 reward, gradual incline
+#     # penalise movement in other directions
+#     # V = 100*( 2*(self.current_base_pos[0] - self.last_base_pos[0]) -(self.current_base_pos[1] - self.last_base_pos[1]) -(self.current_base_pos[2] - self.last_base_pos[2]) )
+
+    
+#     # Symmetry
+#     # -----------------------
+#     S = 0
+#     # just hips is probably a good idea
+#     # S = 10*(np.exp( -10*np.var( np.array([1,-1,1,-1])*np.array(joints[[0,3,6,9]]) ))) #  -np.var(joints[[1,4,7,10]]) -np.var(joints[[2,5,8,11]]) ))
+#     # S += 10*(np.exp( -np.var( np.array([ joints[0], -joints[3]]) ))) #  -np.var(joints[[1,4,7,10]]) -np.var(joints[[2,5,8,11]]) ))
+#     # S += 10*(np.exp( -np.var( np.array([ joints[6], -joints[9]]) )))
+#     # print(joints[0], joints[3], joints[6], joints[9])
+
+#     # Periodicity
+#     # -----------------------
+#     # like transformer
+#     # append all actions taken to an array
+#     # there's a reward associated with taking the same action as a particular number of timesteps ago
+#     # changing the number of timesteps should change the gait frequency
+#     # the number of timesteps ago could be fed into the observation space as a control parameter
+#     P = 0
+#     # self.joint_history.append(joints)
+#     # print(len(self.joint_history))
+#     # if len(self.joint_history) >= 60:
+#     #   P = 1*( np.exp( -10*np.var(np.array(joints)-np.array(self.joint_history[-30]) ) ) )
+#     #   self.joint_history = self.joint_history[-65:]
+#     #   # print(joints, self.joint_history[-30], P)
+#     #   print(P)
+
+    
+#     # print(base_velocity[0], V)
+#     print({ "energy": round(E,1), "height": round(H,1), "roll": round(O2,1), "yaw": round(O,1), "velocity": round(V,1), "symmetry": round(S,1), "periodicity": round(P,1) })
+
+#     reward = E + H + O + V + O2 + S + P 
+#     del env
+#     return reward
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import importlib
+import run 
+
+if __name__ == '__main__':
+  importlib.reload(run)
+  run.run()
+
+-----------------------------
+
+
+# coding=utf-8
+# Copyright 2020 The Google Research Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""A simple locomotion task and termination condition."""
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import numpy as np
+import math 
+
+class MyTask(object):
+  """Default empy task."""
+  def __init__(self):
+    """Initializes the task."""
+    self.current_base_pos = np.zeros(3)
+    self.last_base_pos = np.zeros(3)
+    self.last_motor_angles = np.zeros(12)
+    self.current_motor_angles = np.zeros(12)
+    self.last_base_orientation = np.zeros(4)
+    self.current_base_orientation = np.zeros(4)
+
+  def __call__(self, env):
+    return self.reward(env)
+
+  def reset(self, env):
+    """Resets the internal state of the task."""
+    # print("woo")
+    self._env = env
+    self.last_base_pos = env.robot.GetBasePosition()
+    self.current_base_pos = self.last_base_pos
+
+    self.last_motor_angles = env.robot.GetMotorAngles()
+    self.current_motor_angles = self.last_motor_angles
+
+    
+    self.last_base_orientation = env.robot.GetBaseOrientation()
+    self.current_base_orientation = self.last_base_orientation
+
+  def update(self, env):
+    """Updates the internal state of the task."""
+    self.last_base_pos = self.current_base_pos
+    self.current_base_pos = env.robot.GetBasePosition()
+    
+    self.last_motor_angles = self.current_motor_angles
+    self.current_motor_angles = env.robot.GetMotorAngles()
+
+    self.last_base_orientation = self.current_base_orientation
+    self.current_base_orientation = env.robot.GetBaseOrientation()
+
+  def done(self, env):
+    """Checks if the episode is over.
+
+       If the robot base becomes unstable (based on orientation), the episode
+       terminates early.
+    """
+    rot_quat = env.robot.GetBaseOrientation()
+    rot_mat = env.pybullet_client.getMatrixFromQuaternion(rot_quat)
+    # print(rot_mat)
+    return rot_mat[-1] < 0.85
+
+    # my more lenient done function
+    # rot_quat = env.robot.GetBaseOrientation()
+    # euler_angles = env.pybullet_client.getEulerFromQuaternion(rot_quat)
+    # print(euler_angles)
+    # diff_angles = np.array(euler_angles) - np.array([math.pi / 2.0, 0, math.pi / 2.0])
+    # return abs(diff_angles[0]) > (math.pi / 2)
+
+
+
+  def reward(self, env):
+    """Get the reward without side effects."""
+
+    uid = env.robot.quadruped
+    pyb = env._pybullet_client
+
+    # root_vel_sim, root_ang_vel_sim = pyb.getBaseVelocity(uid)
+    # reward = np.array(root_vel_sim).dot(np.array([1,0,0]))
+
+    base_velocity,_ = pyb.getBaseVelocity(uid)
+    z = self.current_base_pos[2]
+    diff_motor_angles = self.current_motor_angles-self.last_motor_angles
+    diff_position = np.array(self.current_base_pos)-np.array(self.last_base_pos)
+    diff_orientation = np.array(self.current_base_orientation)-np.array(self.last_base_orientation)
+    
+    # Stay still
+    # seems like a valuable curriculum
+    # reward = np.exp(-10*(np.dot(self.current_base_pos,self.current_base_pos)))
+
+    # minimize energy v1
+    # minimize energy through minimizing differences of motor angles
+    # energy_reward = np.exp(-25*np.dot(diff_motor_angles,diff_motor_angles))
+    # motor angle differences range 0..0.2 and there are 12 of them.    
+    
+
+    # Minimize Energy
+    E = 10 * np.exp(-env.robot.GetEnergyConsumptionPerControlStep())
+
+    # Height
+    H = np.exp(-10000*(z-0.45)**4)-0.05
+    # inspection of mocap indicates z between 0.4 and 0.5 is good.
+    # z~=0.2 is lying down which we don't want.
+    # this provides a reasonably square reward for z above 0.3 and below 0.6
+    # outside of this it is slightly negative
+
+    # Velocity: 
+    # aim to go 1 m/s
+    # big normal distribution which goes slightly negative outside of 0..1.8 m/s
+    V = np.exp(-5*(base_velocity[0]-1)**2)-0.02
+
+    # Maintain Orientation
+    # rot_quat = env.robot.GetBaseOrientation()
+    # position, orientation = pyb.getBasePositionAndOrientation(uid)
+    # orientation = pyb.getEulerFromQuaternion(orientation)
+    # diff_orientation = np.array(orientation) - np.array([math.pi / 2.0, 0, math.pi / 2.0])
+    # O = np.exp(-np.dot(diff_orientation, diff_orientation))
+    # initial_orientation = np.array([math.pi / 2.0, 0, math.pi / 2.0])
+
+    # transform z euler angle rotation so it starts at zero when robot is facing the +x direction
+    position, orientation = pyb.getBasePositionAndOrientation(uid)
+    orientation = pyb.getEulerFromQuaternion(orientation)
+    rot = orientation[2]
+    rot -= math.pi/2 
+    if rot < -math.pi:
+      rot += 2*math.pi 
+    # print(rot)
+
+    # Orientation reward
+    O = 10 * np.exp(-5*rot**2)-0.05
+  
+    print({ "energy": E, "height": H, "orientation": O, "velocity": V })
+    
+    reward = E+H+O
+    del env
+    return reward
+
+    # h = max(0, np.exp(-100*(z-0.42)**2) ) 
+    # H = 2 * ( 1/(10*abs(z-0.42)+1) -1/2) 
+    # spikey height reward at 0.42 which is negative outside of 0.3..0.5
+
+
+
+# class SimpleForwardTask(object):
+#   """Default empy task."""
+#   def __init__(self):
+#     """Initializes the task."""
+#     self.current_base_pos = np.zeros(3)
+#     self.last_base_pos = np.zeros(3)
+
+#   def __call__(self, env):
+#     return self.reward(env)
+
+#   def reset(self, env):
+#     """Resets the internal state of the task."""
+#     self._env = env
+#     self.last_base_pos = env.robot.GetBasePosition()
+#     self.current_base_pos = self.last_base_pos
+
+#   def update(self, env):
+#     """Updates the internal state of the task."""
+#     self.last_base_pos = self.current_base_pos
+#     self.current_base_pos = env.robot.GetBasePosition()
+
+#   def done(self, env):
+#     """Checks if the episode is over.
+
+#        If the robot base becomes unstable (based on orientation), the episode
+#        terminates early.
+#     """
+#     rot_quat = env.robot.GetBaseOrientation()
+#     rot_mat = env.pybullet_client.getMatrixFromQuaternion(rot_quat)
+#     return rot_mat[-1] < 0.85
+
+
+#   def reward(self, env):
+#     """Get the reward without side effects."""
+#     del env
+#     reward = self.current_base_pos[0] - self.last_base_pos[0]
+#     return reward
+
+
+
+
+
+
+# How to reload code in python while it's running
+
+import importlib
+import config
+
+importlib.reload(config)
+
+
+# config.py
+height, width = 600, 800
+
+key_wait = 10
+
+# frequency = 2
+periods = 1
+samples = 100
+frequency_increment = 0.01
+
+offset = ( 50, 150)
+scaler = (100, 100)
+
+
+radius = 3
+thickness = -1
+
+rainbow_color = True # overrides color
+color = (0,0,0)
+background_color = (255, 255, 255)
+
+
+escape_keys = [ 27, 113 ] # escape, q
+pause_key = 32 # space
+reset_key = 114 # r
+
+
+
+
+----------------------------------------------------
+
+
+
+
+
+import sys 
+
+import tensorflow as tf
+from stable_baselines.common.policies import MlpPolicy
+from stable_baselines import PPO1
+
+
+from motion_imitation.robots import robot_config
+# from motion_imitation.envs import env_builder as env_builder
+import env_builder as env_builder
+import os
+import datetime
+
+
+# global_policy_kwargs = {
+#     "net_arch": [{"pi": [512, 256],"vf": [512, 256]}],
+#     "act_fun": tf.nn.relu
+# }
+
+
+if __name__ == '__main__':
+
+    train = False
+    model_file = "output/latest.zip"
+
+    # train = True
+    model_file = "" 
+    output_dir = "output/" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + "/"
+
+    # Make and environment and a model
+    # params taken from stable baselinese PPO1 run_robotics.py
+    env = env_builder.build_laikago_env( motor_control_mode = robot_config.MotorControlMode.POSITION, enable_rendering=True)
+    model = PPO1(MlpPolicy, env, verbose=1, timesteps_per_actorbatch=2048, clip_param=0.2, entcoeff=0.0, optim_epochs=5,
+                    optim_stepsize=3e-4, optim_batchsize=256, gamma=0.99, lam=0.95, schedule='linear') # tensorboard_log="tensorboard_log"
+
+    if model_file:
+        model.load_parameters(model_file)
+
+
+    if train:
+        os.mkdir(output_dir)
+        for i in range(1000):
+            model.learn(total_timesteps=1000)
+            save_path =  output_dir + str(i)
+            model.save(save_path)
+            model.save("output/latest")
+
+
+    # test
+    observation = env.reset()
+    while True:
+        action, _ = model.predict(observation, deterministic=True)
+        observation, r, done, info = env.step(action)
+        if done:
+            observation = env.reset()
+
+
+
+
+
+------------------------------------------------------------------------------
+
+
+
+There's a lot of functionality in the minitaur.py file
+
+
+
+
+---------------------------------------
+
+
+import tensorflow as tf
+from stable_baselines.common.policies import MlpPolicy
+from stable_baselines import PPO1
+
+
+from motion_imitation.robots import robot_config
+# from motion_imitation.envs import env_builder as env_builder
+import env_builder as env_builder
+
+
+global_policy_kwargs = {
+    "net_arch": [{"pi": [512, 256],"vf": [512, 256]}],
+    "act_fun": tf.nn.relu
+}
+
+def test(model_file):
+
+    # Make and environment and a model
+    # params taken from stable baselinese PPO1 run_robotics.py
+    env = env_builder.build_laikago_env( motor_control_mode = robot_config.MotorControlMode.POSITION, enable_rendering=True)
+    model = PPO1(MlpPolicy, env, verbose=1, timesteps_per_actorbatch=2048, clip_param=0.2, entcoeff=0.0, optim_epochs=5,
+                    optim_stepsize=3e-4, optim_batchsize=256, gamma=0.99, lam=0.95, schedule='linear') # tensorboard_log="tensorboard_log"
+
+    model.load_parameters(model_file)
+
+    observation = env.reset()
+    while True:
+        action, _ = model.predict(observation, deterministic=True)
+        observation, r, done, info = env.step(action)
+        if done:
+            observation = env.reset()
+
+
+def train(model_file = ""):
+
+    # Make and environment and a model
+    # params taken from stable baselinese PPO1 run_robotics.py
+    env = env_builder.build_laikago_env( motor_control_mode = robot_config.MotorControlMode.POSITION, enable_rendering=False)
+    model = PPO1(MlpPolicy, env, verbose=1, timesteps_per_actorbatch=2048, clip_param=0.2, entcoeff=0.0, optim_epochs=5,
+                    optim_stepsize=3e-4, optim_batchsize=256, gamma=0.99, lam=0.95, schedule='linear') # tensorboard_log="tensorboard_log"
+
+    if model_file:
+        model.load_parameters(model_file)
+
+
+    from stable_baselines.common.callbacks import CheckpointCallback
+    import datetime
+    save_path = "./output/" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + "/"
+    checkpoint_callback = CheckpointCallback(save_freq=1, save_path=save_path, name_prefix="")
+    model.learn(total_timesteps=1000000, callback=checkpoint_callback)
+
+
+def demo():
+    
+
+if __name__ == '__main__':
+    
+
+    
+---------------------------------------------
+
+import tensorflow as tf
+from stable_baselines.common.policies import MlpPolicy
+from stable_baselines import PPO1
+
+
+from motion_imitation.robots import robot_config
+# from motion_imitation.envs import env_builder as env_builder
+import env_builder as env_builder
+
+import sys 
+import datetime 
+
+global_policy_kwargs = {
+    "net_arch": [{"pi": [512, 256],"vf": [512, 256]}],
+    "act_fun": tf.nn.relu
+}
+
+def train(model, file=""):
+    if file:
+        model.load_parameters(file)
+
+    # save stuff
+    from stable_baselines.common.callbacks import CheckpointCallback
+    datetime_filename_prefix = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    checkpoint_callback = CheckpointCallback(save_freq=20480, save_path='./output/', name_prefix=datetime_filename_prefix)
+
+    # He does all the human stuff.  He loves, he laughs, he learns.  Boring!
+    model.learn(total_timesteps=1000000, callback=checkpoint_callback)
+   
+def test(model, file):
+    model.load_parameters(file)
+    observation = env.reset()
+    while True:
+        action, _ = model.predict(observation, deterministic=True)
+        observation, r, done, info = env.step(action)
+        if done:
+            observation = env.reset()
+
+if __name__ == '__main__':
+
+    train = True
+    file = "" 
+    # if training the file is the starting point (optional)
+    # if testing then the file is the net to test
+
+    # # Get arguments from terminal
+    # args = sys.argv[1:]    
+    # if args[0] == "--test":
+    #     train = False
+    # if len(args) == 2:
+    #     file = args[1]
+    
+
+    # make an environment and a model
+    env = env_builder.build_laikago_env( motor_control_mode = robot_config.MotorControlMode.POSITION, enable_rendering=True)
+    # params taken from stable baselinese PPO1 run_robotics.py
+    model = PPO1(MlpPolicy, env, verbose=1, timesteps_per_actorbatch=2048, clip_param=0.2, entcoeff=0.0, optim_epochs=5,
+                    optim_stepsize=3e-4, optim_batchsize=256, gamma=0.99, lam=0.95, schedule='linear') # tensorboard_log="tensorboard_log"
+    # model = PPO1(MlpPolicy, env, verbose=1)
+
+    if train:
+        train(model, file)
+    
+    else: # test
+        model.load_parameters(file)
+        observation = env.reset()
+        while True:
+            action, _ = model.predict(observation, deterministic=True)
+            observation, r, done, info = env.step(action)
+            if done:
+                observation = env.reset()
+
+----------------------------------------------------------------------
+
+
+from motion_imitation.robots import robot_config
+from motion_imitation.envs import env_builder as env_builder
+
+import tensorflow as tf
+from stable_baselines.common.policies import MlpPolicy
+from stable_baselines import PPO1
+
+
+def run():
+
+    # PPO1 argument options
+    # tensorboard_log="tensorboard_log", full_tensorboard_log=True, schedule='constant', clip_param=0.2, entcoeff=0.00, 
+    # clip param constrains freedom of movement. default is 0.2
+
+    env = env_builder.build_laikago_env( motor_control_mode = robot_config.MotorControlMode.POSITION, enable_rendering=True)
+
+    model = PPO1(MlpPolicy, env, verbose=1, policy_kwargs = {
+        "net_arch": [{"pi": [256],"vf": [256]}],
+        "act_fun": tf.nn.relu
+    })
+
+    # print("\n\n\nModel Params\n", model.params, "\n\n\n")
+
+    # train
+    for i in range(1000):
+        model.learn(total_timesteps=1000)
+        model.save("my_ppo_" + str(i))
+
+
+    # model.load_parameters("output/knee_runner/my_ppo_9")
+    # model = PPO1.load("omg") # loads a model without an environment, this model cannot be trained until it has a valid environment.
+
+
+    # test
+    observation = env.reset()
+    i = 0
+    while True:
+        i += 1
+        action, _ = model.predict(observation, deterministic=True)
+        # print("\n\n\nobservation, action\n", observation,"\n",action)
+        # print(i, model.vars, "\n\n\n")
+        observation, r, done, info = env.step(action)
+        if done:
+            observation = env.reset()
+
+if __name__ == '__main__':
+    run()
+
+
+
+
+
+
+
+max_timesteps=int(1e6), lr=3e-4, horizon=2048, batch_size=32
+
+
+hexapod PPO args
+def __init__(self, name, env, ac_size, ob_size, im_size=[48,48,4], args=None, PATH=None, writer=None, hid_size=256, vis=False, normalize=True, ent_coef=0.0, vf_coef=0.5, max_grad_norm=0.5, mpi_rank_weight=1, max_timesteps=int(1e6), lr=3e-4, horizon=2048, batch_size=32, const_std=False):
+
+# default arguments
+args = DotMap(cur_decay='exp', decay_rate=1, decay=0.65, cur_local=True, cur_len=1200, cur_num=3, cur=False, stair_thing=True, obstacle_type='flat', show_detection=False, num_artifacts=2, 
+height_coeff=0.07, difficulty=1, detection_dist=0.9, more_power=1, MASTER=True, dist_off_ground=True, disturbances=True, record_step=True, dist_inc=0, initial_disturbance=100, 
+final_disturbance=100, dist_difficulty=0, expert=False, render=False, e2e=False, vis=True, vis_type='None', camera_rate=6, display_im=False, const_std=False, const_lr=False, max_ts=30000000.0, 
+lr=0.0003, vf_lr=0.0003, std_clip=False, separate_vf=False, lstm_pol=False, dual_value=False, dual_dqn=False, folder='hex', exp='test', control_type='walk', seed=42, eval=True, hpc=False, 
+test_pol=False, eval_first=False, sleep=0.01, dqn=False, debug=False, multi=False, all_setup=False, doa=False, adv=False, yu=False, nicks=False, rand_Kp=False, early_stop=True, inc=1, 
+terrain_first=True, advantage2=True, include_actions=False, single_pol=False, comparison=None, use_roa=False, baseline=False, rand_flat=False, new=False, box_pen=False, eval_dist=False, 
+vf_only=False, speed_cur=False, use_base=False, display_doa=False, act=False, forces=False, mocap=False, stage3=False, dqn_cur_decay=False, term=False, multi_robots=False, supervised=False, 
+min_eps=0.01, eps_decay=3000, min_decay=0.001, just_setup=False, just_dqn=False, old_rew=False, use_classifier=False, sim_type='pb', robot='hexapod', alg='ppo')
+
+
+const learning rate is false
+max timesteps = 300e6 ?
+lr=0.0003, vf_lr=0.0003, std_clip=False, separate_vf=False, lstm_pol=False, 
+control typet = walk
+seed = 42
+# min_eps=0.01, eps_decay=3000, min_decay=0.001
+entcoeff = 0.01
+const_lr=False
+
+
+
+
+gym PPO args
+    def __init__(self, policy, env, gamma=0.99, timesteps_per_actorbatch=256, clip_param=0.2, entcoeff=0.01, optim_epochs=4, optim_stepsize=1e-3, optim_batchsize=64, lam=0.95, adam_epsilon=1e-5, schedule='linear', verbose=0, tensorboard_log=None, _init_setup_model=True, policy_kwargs=None, full_tensorboard_log=False, seed=None, n_cpu_tf_sess=1):
+
+
+
+the ranges of my motors don't seem to be getting clipped properly.  the range of motion is too large
+entropy coefficient is zero in hexapod PPO
+learning rate is the same
+learning rate seems to change over time (linearly?)
+
+
+
+
+
+reward functions
+----------------------
+
+just stand still for a long time.
+change orientation of body - move head around
+go forward 1 meter
+go backward 1 meter
+move in any direction
+move forward
+
+reward laziness
+reward not moving
+reward standing up and being stable
+
+neural pruning
+the leg controllers should be the same.  They should be the same but out of phase.
+to the extent that they are the same it's good.
+
+
+
+keep feet on the ground and then maximize stability of the body
+
+
+points for forward or backwards
+  def reward(self, env):
+    """Get the reward without side effects."""
+    del env
+    return abs(self.current_base_pos[0] - self.last_base_pos[0])
+
+
+
+
+
+===========================================================================================================
+
+
+
+
+
+max_timesteps=int(1e6), lr=3e-4, horizon=2048, batch_size=32
+
+
+hexapod PPO args
+def __init__(self, name, env, ac_size, ob_size, im_size=[48,48,4], args=None, PATH=None, writer=None, hid_size=256, vis=False, normalize=True, ent_coef=0.0, vf_coef=0.5, max_grad_norm=0.5, mpi_rank_weight=1, max_timesteps=int(1e6), lr=3e-4, horizon=2048, batch_size=32, const_std=False):
+
+# default arguments
+args = DotMap(cur_decay='exp', decay_rate=1, decay=0.65, cur_local=True, cur_len=1200, cur_num=3, cur=False, stair_thing=True, obstacle_type='flat', show_detection=False, num_artifacts=2, 
+height_coeff=0.07, difficulty=1, detection_dist=0.9, more_power=1, MASTER=True, dist_off_ground=True, disturbances=True, record_step=True, dist_inc=0, initial_disturbance=100, 
+final_disturbance=100, dist_difficulty=0, expert=False, render=False, e2e=False, vis=True, vis_type='None', camera_rate=6, display_im=False, const_std=False, const_lr=False, max_ts=30000000.0, 
+lr=0.0003, vf_lr=0.0003, std_clip=False, separate_vf=False, lstm_pol=False, dual_value=False, dual_dqn=False, folder='hex', exp='test', control_type='walk', seed=42, eval=True, hpc=False, 
+test_pol=False, eval_first=False, sleep=0.01, dqn=False, debug=False, multi=False, all_setup=False, doa=False, adv=False, yu=False, nicks=False, rand_Kp=False, early_stop=True, inc=1, 
+terrain_first=True, advantage2=True, include_actions=False, single_pol=False, comparison=None, use_roa=False, baseline=False, rand_flat=False, new=False, box_pen=False, eval_dist=False, 
+vf_only=False, speed_cur=False, use_base=False, display_doa=False, act=False, forces=False, mocap=False, stage3=False, dqn_cur_decay=False, term=False, multi_robots=False, supervised=False, 
+min_eps=0.01, eps_decay=3000, min_decay=0.001, just_setup=False, just_dqn=False, old_rew=False, use_classifier=False, sim_type='pb', robot='hexapod', alg='ppo')
+
+
+const learning rate is false
+max timesteps = 300e6 ?
+lr=0.0003, vf_lr=0.0003, std_clip=False, separate_vf=False, lstm_pol=False, 
+control typet = walk
+seed = 42
+# min_eps=0.01, eps_decay=3000, min_decay=0.001
+entcoeff = 0.01
+const_lr=False
+
+
+
+
+gym PPO args
+    def __init__(self, policy, env, gamma=0.99, timesteps_per_actorbatch=256, clip_param=0.2, entcoeff=0.01, optim_epochs=4, optim_stepsize=1e-3, optim_batchsize=64, lam=0.95, adam_epsilon=1e-5, schedule='linear', verbose=0, tensorboard_log=None, _init_setup_model=True, policy_kwargs=None, full_tensorboard_log=False, seed=None, n_cpu_tf_sess=1):
+
+
+
+the ranges of my motors don't seem to be getting clipped properly.  the range of motion is too large
+entropy coefficient is zero in hexapod PPO
+learning rate is the same
+learning rate seems to change over time (linearly?)
+
+
+
+
+
+reward functions
+----------------------
+
+just stand still for a long time.
+change orientation of body - move head around
+go forward 1 meter
+go backward 1 meter
+move in any direction
+move forward
+
+reward laziness
+reward not moving
+reward standing up and being stable
+
+neural pruning
+the leg controllers should be the same.  They should be the same but out of phase.
+to the extent that they are the same it's good.
+
+
+
+keep feet on the ground and then maximize stability of the body
+
+
+points for forward or backwards
+  def reward(self, env):
+    """Get the reward without side effects."""
+    del env
+    return abs(self.current_base_pos[0] - self.last_base_pos[0])
+
+
+----------------------------------------------------------------------------------------
+
+def make_robotics_env(env_id, seed, rank=0, allow_early_resets=True):
+    """
+    Create a wrapped, monitored gym.Env for MuJoCo.
+
+    :param env_id: (str) the environment ID
+    :param seed: (int) the initial seed for RNG
+    :param rank: (int) the rank of the environment (for logging)
+    :param allow_early_resets: (bool) allows early reset of the environment
+    :return: (Gym Environment) The robotic environment
+    """
+    set_global_seeds(seed)
+    env = gym.make(env_id)
+    keys = ['observation', 'desired_goal']
+    # TODO: remove try-except once most users are running modern Gym
+    try:  # for modern Gym (>=0.15.4)
+        from gym.wrappers import FilterObservation, FlattenObservation
+        env = FlattenObservation(FilterObservation(env, keys))
+    except ImportError:  # for older gym (<=0.15.3)
+        from gym.wrappers import FlattenDictWrapper  # pytype:disable=import-error
+        env = FlattenDictWrapper(env, keys)
+    env = Monitor(
+        env, logger.get_dir() and os.path.join(logger.get_dir(), str(rank)),
+        info_keywords=('is_success',), allow_early_resets=allow_early_resets)
+    env.seed(seed)
+    return env
+
+    
+
+import sys 
+import os 
+sys.path.append(os.getcwd()) 
+# ^ this lets you call a script from another directory like "python dir/script.py" 
+# and import from the dir you're currently in.  Yeah python sys.path is bad.
+
+
+
+
+### What is this repository for? ###
+
+* Curriculum  learning code for guided curriculum learning 
+* RL for DSH1. The algorithm used is Proximal Policy Optimisation (PPO), adapted from https://github.com/openai/baselines
+
+
+### Curriculum Info: ###
+- Curriculum is evaluated every episode. If the curriculum is reached (3 successes in a row) the current curriculum is adjusted. This exists in the reset function of the environment: i.e. def reset() in env_pb_biped.py
+- Three parts:
+1. Guide forces: variable = env.Kp (range = 400 - 0), default == 400 (if python3 run.py --cur)
+2. Terrain difficulty: variable = env.difficulty (range = 1-10), default = 1
+3. Perturbations: variable = env.max_disturbance (range = 50 - 2000), default == 50
+
+
+### How do I get set up? ###
+
+Install instructions using python 3.7 and virtualenv
+
+
+    # get python3.7, python3.7 venv and some other packages
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt-get update
+
+    sudo apt install python3.7
+    sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3-dev zlib1g-dev
+    sudo apt install python3.7-venv
+
+    # make a virtual environment called env37
+    python3.7 -m venv env37
+    source env37/bin/activate
+    # deactivate (when done using the environment)
+
+    # install all the things!
+    pip install -r requirements.txt
+    git clone https://github.com/openai/baselines.git
+    pip install -e baselines
+
+
+
+
+
+# Run
+
+Make sure you're in the right virtual environment and you're in the hexapod directory
+
+    source env37/bin/activate
+    cd hexapod
+
+# Hexapod RL
+
+### Train
+
+    python3 run.py
+
+test
+
+    python3 run.py --test_pol
+
+tensorboard
+
+    tensorboard --logdir ~/results/hexapod/latest/20210907_1447/my_test/
+
+the log directory goes under the home directory
+can't use the same folder as one which is training.  the two scripts can't access the same files
+at the same time it appears
+
+
+# My RL
+
+python3 run_7_run_my_ppo_model
+
+
+
+
+
+
+
+
+
+
+
+
+# Old Version
+
+### Hexapod ###
+
+make sure the the virtual environment is activated and you're in the hexapod directory
+
+    source env37/bin/activate
+    cd hexapod
+
+#### To train: ####
+
+    nohup python3 run.py --exp my_test --folder 20210907_1447 &
+
+    nohup mpirun -np 4 --oversubscribe python3 run.py --exp my_test --folder 20210907_1447 &
+
+#### During training: ####
+
+    python3 display.py --exp 20210907_1447/my_test
+
+    tensorboard --logdir ~/results/hexapod/latest/20210907_1447/my_test/
+
+the log directory goes under the home directory
+
+#### To test: ####
+
+    python3 run.py --exp my_test --folder 20210907_1447 --test_pol --render render world
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# To Do
+
+setup github public keys on CSIRO computer
+
+car pybullet gym example with URDF https://gerardmaggiolino.medium.com/creating-openai-gym-environments-with-pybullet-part-2-a1441b9a4d8e?p=13895a622b24
+
+https://towardsdatascience.com/generative-adversarial-imitation-learning-advantages-limits-7c87fc67e42d
+
+# Links
+
+Getting Started with Gym https://gym.openai.com/docs/#environments
+
+panda example https://www.etedal.net/2020/04/pybullet-panda_2.html
+
+
+
+# SymmetryRL
+
+https://github.com/UBCMOCCA/SymmetricRL
+
+## train 3d humanoid
+    
+    ./scripts/local_run_playground_train.sh  w2_test_experiment  env_name='pybullet_envs:Walker3DStepperEnv-v0'
+
+it will take a little time for a network to be produced by the script above.
+you'll get this error if that's the case
+
+    FileNotFoundError: [Errno 2] No such file or directory: 'runs/2021_07_22__22_22_20__w2_test_experiment/models/pybullet_envs:Walker3DStepperEnv-v0_best.pt'
+
+## enjoy
+
+python -m playground.enjoy with experiment_dir=runs/2021_07_22__22_22_20__w2_test_experiment
+
+
+
+
+
+
+# PyBullet Notes
+
+location of urdfs
+/home/nick/.local/lib/python3.8/site-packages/pybullet_data
+
+bullet3/examples/pybullet/gym/pybullet_data/laikago/
+
+/home/sch600/miniconda3/envs/motion_imitation/lib/python3.7/site-packages/pybullet_data
+
+plane_implicit.urdf
+
+
+
+# Meeting with Anthony July 29
+
+find 
+where the reward function is defined
+where they update the network 
+
+there's a simulation and a model.
+the simulation defines the observables
+the model takes in the observables and produces an action
+
+
+the gym environment is the simulation
+
+
+# Notes
+
+
+RL: learn how to do something in a simulated environment.
+environment is simulated - 
+observation -> brain -> action
+observation, action -> limbic system -> dopamine/seratonin  // was that a good thing to do?, should I do that in the future? was it better than expected?
+
+
+Reinforcement Learning(RL) is a type of machine learning technique that enables an agent to learn in an interactive environment by trial and error using feedback from its own actions and experiences.
+https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html
+
+
+
+
+# 30 July 2021
+
+
+What happens when model.predict is called?
+predict is actually defined in the actor critic model available here
+https://stable-baselines.readthedocs.io/en/master/_modules/stable_baselines/common/base_class.html
+
+
+ppo_imitation is based on the ppo sgd class
+
+https://stable-baselines.readthedocs.io/en/master/_modules/stable_baselines/ppo1/pposgd_simple.html
+
+which in turn is based on the actor critic class, which is made from the base RL model class
+
+https://stable-baselines.readthedocs.io/en/master/_modules/stable_baselines/common/base_class.html
+
+
+
+# model.predict is defined in the actor critic class
+
+
+    def predict(self, observation, state=None, mask=None, deterministic=False):
+        if state is None:
+            state = self.initial_state
+        if mask is None:
+            mask = [False for _ in range(self.n_envs)]
+        observation = np.array(observation)
+        vectorized_env = self._is_vectorized_observation(observation, self.observation_space)
+
+        observation = observation.reshape((-1,) + self.observation_space.shape)
+        actions, _, states, _ = self.step(observation, state, mask, deterministic=deterministic)
+
+        clipped_actions = actions
+        # Clip the actions to avoid out of bound error
+        if isinstance(self.action_space, gym.spaces.Box):
+            clipped_actions = np.clip(actions, self.action_space.low, self.action_space.high)
+
+        if not vectorized_env:
+            if state is not None:
+                raise ValueError("Error: The environment must be vectorized when using recurrent policies.")
+            clipped_actions = clipped_actions[0]
+
+        return clipped_actions, states
+
+
+
+the observation is made into a numpy array and then reshaped into (-1, 160) according to my print-foo 
+which makes the first length whatever it needs to be to fit in all the observations.  I believe it becomes a 2x160 matrix
+
+then the model's step function is called which is weird.  it takes the observation  and gets back an action.  so it seems like this is 
+really where the model predicts the action given an observation of the simulation's current state.
+
+
+
+The step function is defined by the model's policy network which is a superclass of the gym's FeedForwardPolicy(ActorCriticPolicy) available here.
+
+https://stable-baselines.readthedocs.io/en/master/_modules/stable_baselines/common/policies.html
+
+
+    def step(self, obs, state=None, mask=None, deterministic=False):
+        if deterministic:
+            action, value, neglogp = self.sess.run([self.deterministic_action, self.value_flat, self.neglogp],
+                                                   {self.obs_ph: obs})
+        else:
+            action, value, neglogp = self.sess.run([self.action, self.value_flat, self.neglogp],
+                                                   {self.obs_ph: obs})
+        return action, value, self.initial_state, neglogp
+
+
+
+
+
+
+[docs]
+    @abstractmethod
+    def step(self, obs, state=None, mask=None):
+        """
+        Returns the policy for a single step
+
+        :param obs: ([float] or [int]) The current observation of the environment
+        :param state: ([float]) The last states (used in recurrent policies)
+        :param mask: ([float]) The last masks (used in recurrent policies)
+        :return: ([float], [float], [float], [float]) actions, values, states, neglogp
+        """
+        raise NotImplementedError
+
+It does seem like step runs the policy and value network, taking in observations and outputting actions and values
+
+
+
+
+
+    def _setup_init(self):
+        """Sets up the distributions, actions, and value."""
+        with tf.variable_scope("output", reuse=True):
+            assert self.policy is not None and self.proba_distribution is not None and self.value_fn is not None
+            self._action = self.proba_distribution.sample()
+            self._deterministic_action = self.proba_distribution.mode()
+            self._neglogp = self.proba_distribution.neglogp(self.action)
+            if isinstance(self.proba_distribution, CategoricalProbabilityDistribution):
+                self._policy_proba = tf.nn.softmax(self.policy)
+            elif isinstance(self.proba_distribution, DiagGaussianProbabilityDistribution):
+                self._policy_proba = [self.proba_distribution.mean, self.proba_distribution.std]
+            elif isinstance(self.proba_distribution, BernoulliProbabilityDistribution):
+                self._policy_proba = tf.nn.sigmoid(self.policy)
+            elif isinstance(self.proba_distribution, MultiCategoricalProbabilityDistribution):
+                self._policy_proba = [tf.nn.softmax(categorical.flatparam())
+                                     for categorical in self.proba_distribution.categoricals]
+            else:
+                self._policy_proba = []  # it will return nothing, as it is not implemented
+            self._value_flat = self.value_fn[:, 0]
+
+
+
+
+
+
+
+# load parameters is defined in the base RL model class
+
+
+[docs]
+    def load_parameters(self, load_path_or_dict, exact_match=True):
+        """
+        Load model parameters from a file or a dictionary
+
+        Dictionary keys should be tensorflow variable names, which can be obtained
+        with ``get_parameters`` function. If ``exact_match`` is True, dictionary
+        should contain keys for all model's parameters, otherwise RunTimeError
+        is raised. If False, only variables included in the dictionary will be updated.
+
+        This does not load agent's hyper-parameters.
+
+        .. warning::
+            This function does not update trainer/optimizer variables (e.g. momentum).
+            As such training after using this function may lead to less-than-optimal results.
+
+        :param load_path_or_dict: (str or file-like or dict) Save parameter location
+            or dict of parameters as variable.name -> ndarrays to be loaded.
+        :param exact_match: (bool) If True, expects load dictionary to contain keys for
+            all variables in the model. If False, loads parameters only for variables
+            mentioned in the dictionary. Defaults to True.
+        """
+        # Make sure we have assign ops
+        if self._param_load_ops is None:
+            self._setup_load_operations()
+
+        if isinstance(load_path_or_dict, dict):
+            # Assume `load_path_or_dict` is dict of variable.name -> ndarrays we want to load
+            params = load_path_or_dict
+        elif isinstance(load_path_or_dict, list):
+            warnings.warn("Loading model parameters from a list. This has been replaced " +
+                          "with parameter dictionaries with variable names and parameters. " +
+                          "If you are loading from a file, consider re-saving the file.",
+                          DeprecationWarning)
+            # Assume `load_path_or_dict` is list of ndarrays.
+            # Create param dictionary assuming the parameters are in same order
+            # as `get_parameter_list` returns them.
+            params = dict()
+            for i, param_name in enumerate(self._param_load_ops.keys()):
+                params[param_name] = load_path_or_dict[i]
+        else:
+            # Assume a filepath or file-like.
+            # Use existing deserializer to load the parameters.
+            # We only need the parameters part of the file, so
+            # only load that part.
+            _, params = BaseRLModel._load_from_file(load_path_or_dict, load_data=False)
+            params = dict(params)
+
+        feed_dict = {}
+        param_update_ops = []
+        # Keep track of not-updated variables
+        not_updated_variables = set(self._param_load_ops.keys())
+        for param_name, param_value in params.items():
+            placeholder, assign_op = self._param_load_ops[param_name]
+            feed_dict[placeholder] = param_value
+            # Create list of tf.assign operations for sess.run
+            param_update_ops.append(assign_op)
+            # Keep track which variables are updated
+            not_updated_variables.remove(param_name)
+
+        # Check that we updated all parameters if exact_match=True
+        if exact_match and len(not_updated_variables) > 0:
+            raise RuntimeError("Load dictionary did not contain all variables. " +
+                               "Missing variables: {}".format(", ".join(not_updated_variables)))
+
+        self.sess.run(param_update_ops, feed_dict=feed_dict)
+
+
+
+# save is defined in ppo sgd simple
+
+[docs]
+    def save(self, save_path, cloudpickle=False):
+        data = {
+            "gamma": self.gamma,
+            "timesteps_per_actorbatch": self.timesteps_per_actorbatch,
+            "clip_param": self.clip_param,
+            "entcoeff": self.entcoeff,
+            "optim_epochs": self.optim_epochs,
+            "optim_stepsize": self.optim_stepsize,
+            "optim_batchsize": self.optim_batchsize,
+            "lam": self.lam,
+            "adam_epsilon": self.adam_epsilon,
+            "schedule": self.schedule,
+            "verbose": self.verbose,
+            "policy": self.policy,
+            "observation_space": self.observation_space,
+            "action_space": self.action_space,
+            "n_envs": self.n_envs,
+            "n_cpu_tf_sess": self.n_cpu_tf_sess,
+            "seed": self.seed,
+            "_vectorize_action": self._vectorize_action,
+            "policy_kwargs": self.policy_kwargs
+        }
+
+        params_to_save = self.get_parameters()
+
+        self._save_to_file(save_path, data=data, params=params_to_save, cloudpickle=cloudpickle)
+
+
+
+
+
+
+
+
+To imitate a given reference motion, we follow a similar
+motion imitation approach as Peng et al. [44]. The inputs to
+the policy is augmented with an additional goal g t , which
+specifies the motion that the robot should imitate. The policy
+is modeled as a feedforward network that maps a given state
+s t and goal g t to a distribution over actions π(a t |s t , g t ). The
+policy is queried at 30Hz for a new action at each timestep.
+The state s t = (q t−2:t , a t−3:t−1 ) is represented by the poses
+q t−2:t of the robot in the three previous timesteps, and the
+three previous actions a t−3:t−1 . The pose features q t consist
+of IMU readings of the root orientation (row, pitch, yaw)
+and the local rotations of every joint. The root position is
+not included among the pose features to avoid the need to
+estimate the root position during real-world deployment.
+The goal g t = (q̂ t+1 , q̂ t+2 , q̂ t+10 , q̂ t+30 ) specifies target
+poses from the reference motion at four future timesteps,
+spanning approximately 1 second. The action a t specifies
+target rotations for PD controllers at each joint. To ensure
+smoother motions, the PD targets are first processed by a
+low-pass filter before being applied on the robot [4].
+
+
+
+
+
+There are 84 values initially in the observation space
+IMU * 3
+action * 3
+current pose * 3
+
+so 4*3 + 12*3 + 12*3 = 84
+
+the final observation space has 160 values so I'm missing 76.
+
+
+Somehow this function adds in the missing 76 values
+
+  def _build_observation_space(self):
+    """Constructs the observation space, including target observations from
+    the reference motion.
+
+    Returns:
+      Observation space representing the concatenations of the original
+      observations and target observations.
+    """
+    obs_space0 = self._gym# coding=utf-8
+# Copyright 2020 The Google Research Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""A simple locomotion task and termination condition."""
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import numpy as np
+import math 
+
+class MyTask(object):
+  """Default empy task."""
+  def __init__(self):
+    """Initializes the task."""
+    self.current_base_pos = np.zeros(3)
+    self.last_base_pos = np.zeros(3)
+    self.last_motor_angles = np.zeros(12)
+    self.current_motor_angles = np.zeros(12)
+    self.last_base_orientation = np.zeros(4)
+    self.current_base_orientation = np.zeros(4)
+
+  def __call__(self, env):
+    return self.reward(env)
+
+  def reset(self, env):
+    """Resets the internal state of the task."""
+    # print("woo")
+    self._env = env
+    self.last_base_pos = env.robot.GetBasePosition()
+    self.current_base_pos = self.last_base_pos
+
+    self.last_motor_angles = env.robot.GetMotorAngles()
+    self.current_motor_angles = self.last_motor_angles
+
+    
+    self.last_base_orientation = env.robot.GetBaseOrientation()
+    self.current_base_orientation = self.last_base_orientation
+
+  def update(self, env):
+    """Updates the internal state of the task."""
+    self.last_base_pos = self.current_base_pos
+    self.current_base_pos = env.robot.GetBasePosition()
+    
+    self.last_motor_angles = self.current_motor_angles
+    self.current_motor_angles = env.robot.GetMotorAngles()
+
+    self.last_base_orientation = self.current_base_orientation
+    self.current_base_orientation = env.robot.GetBaseOrientation()
+
+  def done(self, env):
+    """Checks if the episode is over.
+
+       If the robot base becomes unstable (based on orientation), the episode
+       terminates early.
+    """
+    rot_quat = env.robot.GetBaseOrientation()
+    rot_mat = env.pybullet_client.getMatrixFromQuaternion(rot_quat)
+    # print(rot_mat)
+    return rot_mat[-1] < 0.85
+
+    # my more lenient done function
+    # rot_quat = env.robot.GetBaseOrientation()
+    # euler_angles = env.pybullet_client.getEulerFromQuaternion(rot_quat)
+    # print(euler_angles)
+    # diff_angles = np.array(euler_angles) - np.array([math.pi / 2.0, 0, math.pi / 2.0])
+    # return abs(diff_angles[0]) > (math.pi / 2)
+
+
+
+  def reward(self, env):
+    """Get the reward without side effects."""
+
+    uid = env.robot.quadruped
+    pyb = env._pybullet_client
+
+    # root_vel_sim, root_ang_vel_sim = pyb.getBaseVelocity(uid)
+    # reward = np.array(root_vel_sim).dot(np.array([1,0,0]))
+
+    base_velocity,_ = pyb.getBaseVelocity(uid)
+    z = self.current_base_pos[2]
+    diff_motor_angles = self.current_motor_angles-self.last_motor_angles
+    diff_position = np.array(self.current_base_pos)-np.array(self.last_base_pos)
+    diff_orientation = np.array(self.current_base_orientation)-np.array(self.last_base_orientation)
+    
+    # Stay still
+    # seems like a valuable curriculum
+    # reward = np.exp(-10*(np.dot(self.current_base_pos,self.current_base_pos)))
+
+    # minimize energy v1
+    # minimize energy through minimizing differences of motor angles
+    # energy_reward = np.exp(-25*np.dot(diff_motor_angles,diff_motor_angles))
+    # motor angle differences range 0..0.2 and there are 12 of them.    
+    
+
+    # Minimize Energy
+    E = 10 * np.exp(-env.robot.GetEnergyConsumptionPerControlStep())
+
+    # Height
+    H = np.exp(-10000*(z-0.45)**4)-0.05
+    # inspection of mocap indicates z between 0.4 and 0.5 is good.
+    # z~=0.2 is lying down which we don't want.
+    # this provides a reasonably square reward for z above 0.3 and below 0.6
+    # outside of this it is slightly negative
+
+    # Velocity: 
+    # aim to go 1 m/s
+    # big normal distribution which goes slightly negative outside of 0..1.8 m/s
+    V = np.exp(-5*(base_velocity[0]-1)**2)-0.02
+
+    # Maintain Orientation
+    # rot_quat = env.robot.GetBaseOrientation()
+    # position, orientation = pyb.getBasePositionAndOrientation(uid)
+    # orientation = pyb.getEulerFromQuaternion(orientation)
+    # diff_orientation = np.array(orientation) - np.array([math.pi / 2.0, 0, math.pi / 2.0])
+    # O = np.exp(-np.dot(diff_orientation, diff_orientation))
+    # initial_orientation = np.array([math.pi / 2.0, 0, math.pi / 2.0])
+
+    # transform z euler angle rotation so it starts at zero when robot is facing the +x direction
+    position, orientation = pyb.getBasePositionAndOrientation(uid)
+    orientation = pyb.getEulerFromQuaternion(orientation)
+    rot = orientation[2]
+    rot -= math.pi/2 
+    if rot < -math.pi:
+      rot += 2*math.pi 
+    # print(rot)
+
+    # Orientation reward
+    O = 10 * np.exp(-5*rot**2)-0.05
+  
+    print({ "energy": E, "height": H, "orientation": O, "velocity": V })
+    
+    reward = E+H+O
+    del env
+    return reward
+
+    # h = max(0, np.exp(-100*(z-0.42)**2) ) 
+    # H = 2 * ( 1/(10*abs(z-0.42)+1) -1/2) 
+    # spikey height reward at 0.42 which is negative outside of 0.3..0.5
+
+
+
+# class SimpleForwardTask(object):
+#   """Default empy task."""
+#   def __init__(self):
+#     """Initializes the task."""
+#     self.current_base_pos = np.zeros(3)
+#     self.last_base_pos = np.zeros(3)
+
+#   def __call__(self, env):
+#     return self.reward(env)
+
+#   def reset(self, env):
+#     """Resets the internal state of the task."""
+#     self._env = env
+#     self.last_base_pos = env.robot.GetBasePosition()
+#     self.current_base_pos = self.last_base_pos
+
+#   def update(self, env):
+#     """Updates the internal state of the task."""
+#     self.last_base_pos = self.current_base_pos
+#     self.current_base_pos = env.robot.GetBasePosition()
+
+#   def done(self, env):
+#     """Checks if the episode is over.
+
+#        If the robot base becomes unstable (based on orientation), the episode
+#        terminates early.
+#     """
+#     rot_quat = env.robot.GetBaseOrientation()
+#     rot_mat = env.pybullet_client.getMatrixFromQuaternion(rot_quat)
+#     return rot_mat[-1] < 0.85
+
+
+#   def reward(self, env):
+#     """Get the reward without side effects."""
+#     del env
+#     reward = self.current_base_pos[0] - self.last_base_pos[0]
+#     return reward
+_env.observation_space
+    low0 = obs_space0.low
+    high0 = obs_space0.high
+
+    task_low, task_high = self._task.get_target_obs_bounds()
+    low = np.concatenate([low0, task_low], axis=-1)
+    high = np.concatenate([high0, task_high], axis=-1)
+
+    obs_space = gym.spaces.Box(low, high)
+
+    return obs_space
+
+
+
+
+
+
+
+
+
+
+
+
+# train
+mpirun -np 8 --oversubscribe python3 run.py --exp my_test --folder 20210825
+# enjoy
+python3 display.py --exp 20210825/my_test
+# stats
+tensorboard --logdir /home/nick/results/hexapod/latest/20210825
+
+# test, whatever this means
+python3 run.py --exp my_test --folder 20210825 --test_pol --render render world
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PPO README #
+
+### What is this repository for? ###
+
+* Curriculum  learning code for guided curriculum learning 
+* RL for DSH1. The algorithm used is Proximal Policy Optimisation (PPO), adapted from https://github.com/openai/baselines
+
+
+### Curriculum Info: ###
+- Curriculum is evaluated every episode. If the curriculum is reached (3 successes in a row) the current curriculum is adjusted. This exists in the reset function of the environment: i.e. def reset() in env_pb_biped.py
+- Three parts:
+1. Guide forces: variable = env.Kp (range = 400 - 0), default == 400 (if python3 run.py --cur)
+2. Terrain difficulty: variable = env.difficulty (range = 1-10), default = 1
+3. Perturbations: variable = env.max_disturbance (range = 50 - 2000), default == 50
+
+
+### How do I get set up? ###
+
+Install instructions using python 3.7 and virtualenv
+
+
+    # ppa for python3.7
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt-get update
+
+
+    sudo apt install python3.7
+    sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3-dev zlib1g-dev
+    sudo apt install python3.7-venv
+
+    python3.7 -m venv env37
+    source env37/bin/activate
+    # deactivate (when done using the environment)
+
+    pip install -r requirements.txt
+
+    git clone https://github.com/openai/baselines.git
+    pip install -e baselines
+
+
+
+#### To train: ####
+
+    mpirun -np 8 --oversubscribe python3 run.py --exp my_test --folder test_folder
+
+- However many cores you want to use 
+- will save tensorboard plots etc to /home/User/results/rl_hex/latest/test_folder/my_test
+
+#### During training: ####
+* Display while training (run at anytime, will show training in pybullet):
+
+    python3 display.py --exp test_folder/my_test
+
+* Tensorboard:
+
+    tensorboard --logdir /home/User/results/rl_hex/latest/test_folder 
+
+#### To test: ####
+
+    python3 run.py --exp my_test --folder test_folder --test_pol --render render world
+
+
+
+
+
+
+# 20210922 readme backup
+
+
+### How do I get set up? ###
+
+Install instructions using python 3.7 and virtualenv
+
+
+    # get python3.7, python3.7 venv and some other packages
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt-get update
+
+    sudo apt install python3.7
+    sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3-dev zlib1g-dev
+    sudo apt install python3.7-venv
+
+    # make a virtual environment called env37
+    python3.7 -m venv env37
+    source env37/bin/activate
+    # deactivate (when done using the environment)
+
+    # install all the things!
+    pip install -r requirements.txt
+    git clone https://github.com/openai/baselines.git
+    pip install -e baselines
+
+
+### Hexapod Reinforcement Learning ###
+
+make sure the the virtual environment is activated and you're in the hexapod directory
+
+    source env37/bin/activate
+    cd hexapod
+
+Train
+
+    python3 run.py   ( goes to default folder under ~/results... )
+
+    python3 run.py --exp my_test --folder 20210908
+
+    nohup mpirun -np 4 --oversubscribe python3 run.py --exp my_test --folder 20210908 &
+
+
+During training
+
+    python3 display.py --exp 20210908/my_test    ???what does this do???
+
+    tensorboard --logdir <dir>
+
+
+Test
+
+    python3 run.py --exp my_test --folder 20210908 --test_pol --render render world
+
+
+
+
+### Motion Imitation ###
+
+To run
+
+    python3 motion_imitation/run.py --mode test --motion_file motion_imitation/data/motions/dog_pace.txt --model_file motion_imitation/data/policies/dog_pace.zip --visualize
+
+more detail in motion_imitation/README.md
+
+
+### My RL ###
+
+python run7_run_my_ppo_model.py
+
+

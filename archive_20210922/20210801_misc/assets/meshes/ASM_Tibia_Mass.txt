@@ -1,0 +1,36 @@
+Mass properties of ASM_Tibia
+     Configuration: Default
+     Coordinate system: URDF_COORD-Tibia
+
+Mass = 415.90 grams
+
+Volume = 298408.22 cubic millimeters
+
+Surface area = 195728.45  square millimeters
+
+Center of mass: ( millimeters )
+	X = 67.50
+	Y = -7.76
+	Z = 1.54
+
+Principal axes of inertia and principal moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass.
+	 Ix = ( 1.00, -0.04, -0.01)   	Px = 397359.16
+	 Iy = ( 0.01,  0.01,  1.00)   	Py = 5607443.86
+	 Iz = (-0.04, -1.00,  0.01)   	Pz = 5849431.91
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 405468.55	Lxy = -205466.04	Lxz = -42830.75
+	Lyx = -205466.04	Lyy = 5841634.06	Lyz = 4848.05
+	Lzx = -42830.75	Lzy = 4848.05	Lzz = 5607132.32
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the output coordinate system.
+	Ixx = 431521.25	Ixy = -423402.96	Ixz = 445.33
+	Iyx = -423402.96	Iyy = 7737600.98	Iyz = -129.03
+	Izx = 445.33	Izy = -129.03	Izz = 7527175.35
+
+One or more components have overridden mass properties:
+	ASM_Bearing_Unit_V1.0
+	ASM_Bearing_Unit_V1.0

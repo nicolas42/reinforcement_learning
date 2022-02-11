@@ -1,0 +1,22 @@
+{
+    "os": "Linux-5.4.0-58-generic-x86_64-with-LinuxMint-20.1-ulyssa",
+    "python": "3.7.11",
+    "heartbeatAt": "2021-09-15T22:39:15.963137",
+    "startedAt": "2021-09-15T22:39:11.313715",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "test.py",
+    "codePath": "hexapod/test.py",
+    "git": {
+        "remote": "https://bitbucket.csiro.au/scm/avp/student-project---nicolas-schmidt.git",
+        "commit": "a7083de33a207fe335416ab25c42693debb3a4cd"
+    },
+    "email": "nicolas42@gmail.com",
+    "root": "/home/nick/student-project---nicolas-schmidt",
+    "host": "nicks-matebook",
+    "username": "nick",
+    "executable": "/home/nick/student-project---nicolas-schmidt/env37/bin/python3"
+}

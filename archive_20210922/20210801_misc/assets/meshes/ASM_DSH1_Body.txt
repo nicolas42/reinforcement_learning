@@ -1,0 +1,32 @@
+Mass properties of ASM_DSH1_Body
+     Configuration: Default
+     Coordinate system: URDF_CORD
+
+Mass = 7636.90 grams
+
+Volume = 5124974.63 cubic millimeters
+
+Surface area = 1477708.98  square millimeters
+
+Center of mass: ( millimeters )
+	X = -1.31
+	Y = 0.03
+	Z = 70.14
+
+Principal axes of inertia and principal moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass.
+	 Ix = ( 0.81, -0.03, -0.59)   	Px = 188370735.25
+	 Iy = ( 0.59, -0.02,  0.81)   	Py = 189197591.52
+	 Iz = (-0.04, -1.00,  0.00)   	Pz = 249600740.96
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 188738091.31	Lxy = -2190442.00	Lxz = -395709.04
+	Lyx = -2190442.00	Lyy = 249521863.20	Lyz = -37384.63
+	Lzx = -395709.04	Lzy = -37384.63	Lzz = 188909113.20
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the output coordinate system.
+	Ixx = 226303964.31	Ixy = -2190787.13	Ixz = -1097896.21
+	Iyx = -2190787.13	Iyy = 287100852.52	Iyz = -18920.91
+	Izx = -1097896.21	Izy = -18920.91	Izz = 188922247.68

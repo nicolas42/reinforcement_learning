@@ -1,0 +1,2455 @@
+<!-- Major URDF updates by Russell Buchanan August 2018 -->
+<robot
+  name="weaver_new">
+  <link
+    name="base_link">
+
+    <inertial>
+      <origin
+        xyz="-0.00759148705427965 -6.561613834901E-05 0.06007694"
+        rpy="0 0 0" />
+      <mass
+        value="1.24298717716044" />
+      <inertia
+        ixx="0.00898901463392721"
+        ixy="7.80702196899809E-06"
+        ixz="-0.00017493471498136"
+        iyy="0.0162211037480001"
+        iyz="-5.65946217649229E-07"
+        izz="0.0216779813544911" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0.098"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin
+        xyz="0 0 0.098"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="base_link_col.STL" />
+      </geometry>
+    </collision>
+
+  </link>
+  
+  <link
+    name="AL_coxa">
+    <inertial>
+      <origin
+        xyz="-0.0126327016759244 -0.0262896266838802 -2.94089483135196E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.108250399243993" />
+      <inertia
+        ixx="3.85527087290252E-05"
+        ixy="1.38474767894281E-06"
+        ixz="3.95361976343372E-07"
+        iyy="4.75576540653116E-05"
+        iyz="5.66983924874739E-09"
+        izz="5.27292465039966E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AL_coxa.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AL_coxa_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AL_coxa_joint"
+    type="revolute">
+    <origin
+      xyz="0.175000000000008 0.0899999999999982 0.0588"
+      rpy="1.5707963267949 0 2.35619449019235" />
+    <parent
+      link="base_link" />
+    <child
+      link="AL_coxa" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AL_coxat">
+    <inertial>
+      <origin
+        xyz="0.00322456842068006 -0.042648725408693 1.84191836782865E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.047339056341398" />
+      <inertia
+        ixx="1.74881813811441E-05"
+        ixy="-2.95393241324098E-06"
+        ixz="-2.81412896472616E-13"
+        iyy="2.26979799760414E-05"
+        iyz="5.17638655669823E-12"
+        izz="3.33964012828006E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AL_coxat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AL_coxat_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AL_coxat_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0272999999999766 0"
+      rpy="-1.5707963267949 9.99200722162641E-16 3.14159265358979" />
+    <parent
+      link="AL_coxa" />
+    <child
+      link="AL_coxat" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AL_femur">
+    <inertial>
+      <origin
+        xyz="1.94931050229163E-06 -0.0502731422516415 -4.48898264527459E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.161017193223397" />
+      <inertia
+        ixx="0.0002859947309078"
+        ixy="4.72799271490016E-08"
+        ixz="-2.44529621982891E-09"
+        iyy="3.95520604139226E-05"
+        iyz="1.19194994154251E-07"
+        izz="0.000273544719570858" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AL_femur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AL_femur_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AL_femur_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0619999999999947 0"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="AL_coxat" />
+    <child
+      link="AL_femur" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AL_tibia">
+    <inertial>
+      <origin
+        xyz="3.17882988839224E-05 0.0555617322770338 0.0024498946635602"
+        rpy="0 0 0" />
+      <mass
+        value="0.0971761832774268" />
+      <inertia
+        ixx="0.000121187030444208"
+        ixy="-4.31674791982839E-08"
+        ixz="-5.07976803844401E-09"
+        iyy="2.89704323167637E-05"
+        iyz="-5.8763093230428E-06"
+        izz="0.000107560337788206" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AL_tibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AL_tibia_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AL_tibia_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.1065 0"
+      rpy="-0.0193646475888996 1.48721407503726E-08 3.14159265330176" />
+    <parent
+      link="AL_femur" />
+    <child
+      link="AL_tibia" />
+    <axis
+      xyz="0 -0.0193634373547593 0.999812511070855" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AL_tarsus">
+    <inertial>
+      <origin
+        xyz="0.035640461688772 -7.22386515883411E-09 0.00321380889583989"
+        rpy="0 0 0" />
+      <mass
+        value="0.0427912868695712" />
+      <inertia
+        ixx="1.2923299433486E-05"
+        ixy="-3.44018556589819E-11"
+        ixz="-4.9013553689971E-06"
+        iyy="7.84978021986766E-05"
+        iyz="1.22229395370361E-12"
+        izz="6.93507036251619E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AL_tarsus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AL_tarsus_col.STL" />
+      </geometry>
+      <contact>
+        <friction_anchor/>
+        <stiffness value="30000.0"/>
+        <damping value="1000.0"/>
+        <spinning_friction value=".3"/>
+        <lateral_friction value="1"/>
+      </contact>
+      <surface>
+        <friction>
+          <ode>
+            <mu1>0.05</mu1>
+            <mu2>0.05</mu2>
+            <maxContacts>1</maxContacts>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="AL_tarsus_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0879835009742352 0.00170398248721886"
+      rpy="-1.48777190426124E-08 -0.0193646475888956 1.57079632708298" />
+    <parent
+      link="AL_tibia" />
+    <child
+      link="AL_tarsus" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BL_coxa">
+    <inertial>
+      <origin
+        xyz="-0.0126327017578083 -0.0262896266710039 -2.94089356557559E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.108250398399237" />
+      <inertia
+        ixx="3.85527083728985E-05"
+        ixy="1.3847476958506E-06"
+        ixz="3.9536199208153E-07"
+        iyy="4.75576536497135E-05"
+        iyz="5.66976143339862E-09"
+        izz="5.27292463013248E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BL_coxa.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BL_coxa_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL_coxa_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.140000000000005 0.0588"
+      rpy="1.5707963267949 1.43144350060658E-31 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="BL_coxa" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BL_coxat">
+    <inertial>
+      <origin
+        xyz="0.00322456843940139 -0.0199487254260735 1.84192165686436E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473390563493884" />
+      <inertia
+        ixx="1.74881813551982E-05"
+        ixy="-2.95393242832494E-06"
+        ixz="-2.81439712590928E-13"
+        iyy="2.26979800127984E-05"
+        iyz="5.17636265748529E-12"
+        izz="3.33964012935379E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BL_coxat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BL_coxat_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL_coxat_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0272999999999767 0.0226999999999946"
+      rpy="-1.5707963267949 -8.26948102009006E-16 -3.14159265358979" />
+    <parent
+      link="BL_coxa" />
+    <child
+      link="BL_coxat" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BL_femur">
+    <inertial>
+      <origin
+        xyz="1.94930615164679E-06 -0.0502731423758347 -4.48897852852343E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.16101719842294" />
+      <inertia
+        ixx="0.000285994732084457"
+        ixy="4.72799663358013E-08"
+        ixz="-2.44529702587561E-09"
+        iyy="3.9552062637028E-05"
+        iyz="1.19195252865889E-07"
+        izz="0.000273544718966196" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BL_femur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BL_femur_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL_femur_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0393 0"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="BL_coxat" />
+    <child
+      link="BL_femur" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BL_tibia">
+    <inertial>
+      <origin
+        xyz="3.17883837628596E-05 0.055598753104094 0.00137356915021568"
+        rpy="0 0 0" />
+      <mass
+        value="0.0971761860003987" />
+      <inertia
+        ixx="0.000121187031212763"
+        ixy="-4.32578869698677E-08"
+        ixz="-4.24273966447233E-09"
+        iyy="2.92274287178076E-05"
+        iyz="-7.39338834503258E-06"
+        izz="0.00010730334234406" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BL_tibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BL_tibia_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL_tibia_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.1065 0"
+      rpy="1.43185159909298E-15 0 3.14159265358979" />
+    <parent
+      link="BL_femur" />
+    <child
+      link="BL_tibia" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BL_tarsus">
+    <inertial>
+      <origin
+        xyz="0.0356404383354079 -7.59224401403191E-09 0.00321380983274337"
+        rpy="0 0 0" />
+      <mass
+        value="0.0427912775199976" />
+      <inertia
+        ixx="1.29232990947271E-05"
+        ixy="-3.61090772675561E-11"
+        ixz="-4.9013511739472E-06"
+        iyy="7.84976947348117E-05"
+        iyz="1.27343670949195E-12"
+        izz="6.93505962846741E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BL_tarsus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BL_tarsus_col.STL" />
+      </geometry>
+      <contact>
+        <friction_anchor/>
+        <stiffness value="30000.0"/>
+        <damping value="1000.0"/>
+        <spinning_friction value=".3"/>
+        <lateral_friction value="1"/>
+      </contact>
+      <surface>
+        <friction>
+          <ode>
+            <mu1>0.05</mu1>
+            <mu2>0.05</mu2>
+            <maxContacts>1</maxContacts>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="BL_tarsus_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.088 0"
+      rpy="5.05319527541181E-16 2.28167636694143E-15 1.5707963267949" />
+    <parent
+      link="BL_tibia" />
+    <child
+      link="BL_tarsus" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CL_coxa">
+    <inertial>
+      <origin
+        xyz="-0.012632701668827 -0.0262896266841513 -2.94089624845451E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.108250399319588" />
+      <inertia
+        ixx="3.85527087633549E-05"
+        ixy="1.38474767831933E-06"
+        ixz="3.95361957972071E-07"
+        iyy="4.75576541011806E-05"
+        iyz="5.66983973820856E-09"
+        izz="5.27292465083536E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CL_coxa.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CL_coxa_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CL_coxa_joint"
+    type="revolute">
+    <origin
+      xyz="-0.174999999999998 0.0900000000000082 0.0588"
+      rpy="1.5707963267949 0 -2.35619449019234" />
+    <parent
+      link="base_link" />
+    <child
+      link="CL_coxa" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CL_coxat">
+    <inertial>
+      <origin
+        xyz="0.00322456842092589 -0.042648725408981 1.84192464058874E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473390563414069" />
+      <inertia
+        ixx="1.74881813811838E-05"
+        ixy="-2.95393241336154E-06"
+        ixz="-2.81390978510956E-13"
+        iyy="2.26979799762259E-05"
+        iyz="5.17635965133413E-12"
+        izz="3.33964012830189E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CL_coxat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CL_coxat_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CL_coxat_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0272999999999766 0"
+      rpy="-1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="CL_coxa" />
+    <child
+      link="CL_coxat" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CL_femur">
+    <inertial>
+      <origin
+        xyz="1.94931076638594E-06 -0.0502731422740177 -4.48898169302936E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.161017193147997" />
+      <inertia
+        ixx="0.000285994730707631"
+        ixy="4.72799288225188E-08"
+        ixz="-2.44529729278806E-09"
+        iyy="3.95520603797325E-05"
+        iyz="1.19195070233865E-07"
+        izz="0.000273544719402247" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CL_femur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CL_femur_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CL_femur_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0619999999999946 0"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="CL_coxat" />
+    <child
+      link="CL_femur" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CL_tibia">
+    <inertial>
+      <origin
+        xyz="3.17883353263271E-05 0.00137356921260609 -0.0555987534494042"
+        rpy="0 0 0" />
+      <mass
+        value="0.097176183277049" />
+      <inertia
+        ixx="0.000121187030442943"
+        ixy="-4.24274050754199E-09"
+        ixz="4.32578310134829E-08"
+        iyy="0.00010730334264716"
+        iyz="7.39338815943135E-06"
+        izz="2.92274274562315E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CL_tibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CL_tibia_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CL_tibia_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.1065 0"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="CL_femur" />
+    <child
+      link="CL_tibia" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CL_tarsus">
+    <inertial>
+      <origin
+        xyz="0.0356404616886621 -7.2238463821872E-09 0.00321380889589828"
+        rpy="0 0 0" />
+      <mass
+        value="0.0427912868696943" />
+      <inertia
+        ixx="1.292329943354E-05"
+        ixy="-3.44018840496861E-11"
+        ixz="-4.90135536909265E-06"
+        iyy="7.84978021989049E-05"
+        iyz="1.22231028705787E-12"
+        izz="6.93507036253422E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CL_tarsus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CL_tarsus_col.STL" />
+      </geometry>
+      <contact>
+        <friction_anchor/>
+        <stiffness value="30000.0"/>
+        <damping value="1000.0"/>
+        <spinning_friction value=".3"/>
+        <lateral_friction value="1"/>
+      </contact>
+      <surface>
+        <friction>
+          <ode>
+            <mu1>0.05</mu1>
+            <mu2>0.05</mu2>
+            <maxContacts>1</maxContacts>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="CL_tarsus_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.088"
+      rpy="1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="CL_tibia" />
+    <child
+      link="CL_tarsus" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CR_coxa">
+    <inertial>
+      <origin
+        xyz="-0.0126327016688212 0.026283827670928 -2.94073512716597E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.108250399319648" />
+      <inertia
+        ixx="3.85514366187558E-05"
+        ixy="-1.38654335928304E-06"
+        ixz="3.95364161212748E-07"
+        iyy="4.7557654111446E-05"
+        iyz="-7.81555794110925E-10"
+        izz="5.2727974353502E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CR_coxa.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CR_coxa_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CR_coxa_joint"
+    type="revolute">
+    <origin
+      xyz="-0.175 -0.0899999999999999 0.0588"
+      rpy="-1.5707963267949 0 2.35619449019234" />
+    <parent
+      link="base_link" />
+    <child
+      link="CR_coxa" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CR_coxat">
+    <inertial>
+      <origin
+        xyz="0.00322456842098827 -0.0426487254089663 1.84189551111213E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.04733905634204" />
+      <inertia
+        ixx="1.74881813814019E-05"
+        ixy="-2.9539324135307E-06"
+        ixz="-2.81448126330313E-13"
+        iyy="2.26979799763797E-05"
+        iyz="5.1764222413313E-12"
+        izz="3.33964012833879E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CR_coxat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CR_coxat_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CR_coxat_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0273 0"
+      rpy="-1.5707963267949 -1.83186799063151E-15 0" />
+    <parent
+      link="CR_coxa" />
+    <child
+      link="CR_coxat" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CR_femur">
+    <inertial>
+      <origin
+        xyz="1.94931050229163E-06 4.48898264525655E-05 -0.0502731422516415"
+        rpy="0 0 0" />
+      <mass
+        value="0.161017193223397" />
+      <inertia
+        ixx="0.000285994730907801"
+        ixy="2.44529621981792E-09"
+        ixz="4.72799271490913E-08"
+        iyy="0.000273544719570859"
+        iyz="-1.19194994153884E-07"
+        izz="3.95520604139226E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CR_femur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CR_femur_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CR_femur_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.062 0"
+      rpy="1.5707963267949 1.5707963267949 3.14159265359" />
+    <parent
+      link="CR_coxat" />
+    <child
+      link="CR_femur" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CR_tibia">
+    <inertial>
+      <origin
+        xyz="3.17883353189857E-05 -0.0555987534496207 -0.00137356921251791"
+        rpy="0 0 0" />
+      <mass
+        value="0.0971761832766621" />
+      <inertia
+        ixx="0.00012118703044161"
+        ixy="4.3257830973829E-08"
+        ixz="4.242740523455E-09"
+        iyy="2.92274274560395E-05"
+        iyz="-7.3933881589663E-06"
+        izz="0.000107303342646014" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CR_tibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CR_tibia_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CR_tibia_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.1065"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="CR_femur" />
+    <child
+      link="CR_tibia" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="CR_tarsus">
+    <inertial>
+      <origin
+        xyz="0.0356404502699696 -6.47393358366166E-09 0.00321380880663966"
+        rpy="0 0 0" />
+      <mass
+        value="0.0427912820369785" />
+      <inertia
+        ixx="1.29232990839249E-05"
+        ixy="-3.09570402052015E-11"
+        ixz="-4.90135587688033E-06"
+        iyy="7.84977530070108E-05"
+        iyz="1.11916066474112E-12"
+        izz="6.9350654358845E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="CR_tarsus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="CR_tarsus_col.STL" />
+      </geometry>
+      <contact>
+        <friction_anchor/>
+        <stiffness value="30000.0"/>
+        <damping value="1000.0"/>
+        <spinning_friction value=".3"/>
+        <lateral_friction value="1"/>
+      </contact>
+      <surface>
+        <friction>
+          <ode>
+            <mu1>0.05</mu1>
+            <mu2>0.05</mu2>
+            <maxContacts>1</maxContacts>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="CR_tarsus_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0879999999999999 0"
+      rpy="3.14159265358979 -1.94289029309402E-15 -1.5707963267949" />
+    <parent
+      link="CR_tibia" />
+    <child
+      link="CR_tarsus" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BR_coxa">
+    <inertial>
+      <origin
+        xyz="-0.0126327017578069 0.0262838276668582 -2.9407324436459E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.108250398399237" />
+      <inertia
+        ixx="3.85514362302588E-05"
+        ixy="-1.38654336124219E-06"
+        ixz="3.95364195331059E-07"
+        iyy="4.75576536599566E-05"
+        iyz="-7.81628237663384E-10"
+        izz="5.27279741484064E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BR_coxa.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BR_coxa_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR_coxa_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.14 0.0588"
+      rpy="-1.5707963267949 -3.74915180455534E-33 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="BR_coxa" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BR_coxat">
+    <inertial>
+      <origin
+        xyz="0.00322456843926445 -0.0199487254258844 1.84193138519362E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473390563494482" />
+      <inertia
+        ixx="1.74881813551548E-05"
+        ixy="-2.95393242824373E-06"
+        ixz="-2.8143185015876E-13"
+        iyy="2.26979800127065E-05"
+        iyz="5.17635598291648E-12"
+        izz="3.33964012934035E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BR_coxat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BR_coxat_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR_coxat_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0273 0.0227"
+      rpy="-1.5707963267949 -6.12303176911188E-17 3.74915180455534E-33" />
+    <parent
+      link="BR_coxa" />
+    <child
+      link="BR_coxat" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BR_femur">
+    <inertial>
+      <origin
+        xyz="1.94930641257696E-06 0.0502731423988428 4.4889775435684E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.161017198344016" />
+      <inertia
+        ixx="0.000285994731881859"
+        ixy="-4.72799679134353E-08"
+        ixz="2.44529809753879E-09"
+        iyy="3.9552062601809E-05"
+        iyz="1.19195330567474E-07"
+        izz="0.000273544718796064" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BR_femur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BR_femur_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR_femur_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0393 0"
+      rpy="3.14159265358979 1.5707963267949 0" />
+    <parent
+      link="BR_coxat" />
+    <child
+      link="BR_femur" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BR_tibia">
+    <inertial>
+      <origin
+        xyz="3.17883837551991E-05 -0.055598753103953 -0.00137356915026763"
+        rpy="0 0 0" />
+      <mass
+        value="0.0971761860006536" />
+      <inertia
+        ixx="0.000121187031213631"
+        ixy="4.32578869295509E-08"
+        ixz="4.24273968119749E-09"
+        iyy="2.92274287179364E-05"
+        iyz="-7.3933883453387E-06"
+        izz="0.000107303342344804" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BR_tibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BR_tibia_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR_tibia_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.1065 0"
+      rpy="7.65717784317887E-16 0 3.14159265358979" />
+    <parent
+      link="BR_femur" />
+    <child
+      link="BR_tibia" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="BR_tarsus">
+    <inertial>
+      <origin
+        xyz="0.0356418098307435 -3.76651621558644E-08 0.00321378795866891"
+        rpy="0 0 0" />
+      <mass
+        value="0.0427918103113372" />
+      <inertia
+        ixx="1.29233106804525E-05"
+        ixy="-1.78601081153684E-10"
+        ixz="-4.9014538359243E-06"
+        iyy="7.85041660169227E-05"
+        iyz="5.4092134130153E-12"
+        izz="6.93570670528488E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="BR_tarsus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="BR_tarsus_col.STL" />
+      </geometry>
+      <contact>
+        <friction_anchor/>
+        <stiffness value="30000.0"/>
+        <damping value="1000.0"/>
+        <spinning_friction value=".3"/>
+        <lateral_friction value="1"/>
+      </contact>
+      <surface>
+        <friction>
+          <ode>
+            <mu1>0.05</mu1>
+            <mu2>0.05</mu2>
+            <maxContacts>1</maxContacts>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="BR_tarsus_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.088 0"
+      rpy="-3.14159265358979 -8.26948102009006E-16 -1.5707963267949" />
+    <parent
+      link="BR_tibia" />
+    <child
+      link="BR_tarsus" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AR_coxa">
+    <inertial>
+      <origin
+        xyz="-0.0126327016688656 0.0262838276709944 -2.94073512709381E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.108250399319334" />
+      <inertia
+        ixx="3.85514366185909E-05"
+        ixy="-1.38654335917332E-06"
+        ixz="3.9536416121336E-07"
+        iyy="4.75576541113712E-05"
+        iyz="-7.8155579593374E-10"
+        izz="5.27279743532636E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AR_coxa.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AR_coxa_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AR_coxa_joint"
+    type="revolute">
+    <origin
+      xyz="0.175 -0.0900000000000001 0.0588"
+      rpy="-1.5707963267949 0 -2.35619449019234" />
+    <parent
+      link="base_link" />
+    <child
+      link="AR_coxa" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AR_coxat">
+    <inertial>
+      <origin
+        xyz="0.00322456842092667 -0.0426487254088967 1.84192269769845E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.047339056341662" />
+      <inertia
+        ixx="1.74881813812544E-05"
+        ixy="-2.95393241336118E-06"
+        ixz="-2.81391006638428E-13"
+        iyy="2.26979799762262E-05"
+        iyz="5.17635812842465E-12"
+        izz="3.33964012830897E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AR_coxat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AR_coxat_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AR_coxat_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0273 0"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="AR_coxa" />
+    <child
+      link="AR_coxat" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AR_femur">
+    <inertial>
+      <origin
+        xyz="1.94931076637206E-06 -4.4889816930252E-05 0.0502731422740177"
+        rpy="0 0 0" />
+      <mass
+        value="0.161017193147997" />
+      <inertia
+        ixx="0.00028599473070763"
+        ixy="-2.44529729275451E-09"
+        ixz="-4.7279928822461E-08"
+        iyy="0.000273544719402246"
+        iyz="-1.19195070234166E-07"
+        izz="3.95520603797324E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AR_femur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AR_femur_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AR_femur_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.062 0"
+      rpy="1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="AR_coxat" />
+    <child
+      link="AR_femur" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AR_tibia">
+    <inertial>
+      <origin
+        xyz="3.17883353196241E-05 -0.0555987534492564 -0.00137356921266399"
+        rpy="0 0 0" />
+      <mass
+        value="0.0971761832773038" />
+      <inertia
+        ixx="0.000121187030443879"
+        ixy="4.32578309767166E-08"
+        ixz="4.24274052207579E-09"
+        iyy="2.92274274563597E-05"
+        iyz="-7.39338815975043E-06"
+        izz="0.000107303342647974" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AR_tibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AR_tibia_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="AR_tibia_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.1065"
+      rpy="-1.57079632679489 0 3.14159265358979" />
+    <parent
+      link="AR_femur" />
+    <child
+      link="AR_tibia" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+  <link
+    name="AR_tarsus">
+    <inertial>
+      <origin
+        xyz="0.0356404616887719 -7.22386514495632E-09 0.00321380889583958"
+        rpy="0 0 0" />
+      <mass
+        value="0.042791286869571" />
+      <inertia
+        ixx="1.2923299433486E-05"
+        ixy="-3.4401855647501E-11"
+        ixz="-4.90135536899739E-06"
+        iyy="7.84978021986767E-05"
+        iyz="1.22229395810001E-12"
+        izz="6.9350703625162E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="AR_tarsus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="AR_tarsus_col.STL" />
+      </geometry>
+      <contact>
+        <friction_anchor/>
+        <stiffness value="30000.0"/>
+        <damping value="1000.0"/>
+        <spinning_friction value=".3"/>
+        <lateral_friction value="1"/>
+      </contact>
+      <surface>
+        <friction>
+          <ode>
+            <mu1>0.05</mu1>
+            <mu2>0.05</mu2>
+            <maxContacts>1</maxContacts>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="AR_tarsus_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0880000000000001 0"
+      rpy="3.14159265358979 -1.94289029309402E-15 -1.5707963267949" />
+    <parent
+      link="AR_tibia" />
+    <child
+      link="AR_tarsus" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="5"
+      velocity="3.14159265359" />
+  </joint>
+
+
+
+
+<!-- **********************Realsense Camera***************************** -->
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.16 0 0.128" rpy="0 0.5 0"/>
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+  </joint>
+
+
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.025 0.09 0.025"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.025 0.09 0.025"/>
+      </geometry>
+            <material name="red"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+
+<gazebo reference="camera_link">
+      <sensor name="camera" type="depth">
+        <update_rate>20</update_rate>
+        <camera>
+          <horizontal_fov>1.59174</horizontal_fov>
+          <image>
+            <width>848</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.2</near>
+            <far>3</far>
+          </clip>
+
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+
+        </camera>
+        <plugin name="camera_plugin" filename="libgazebo_ros_openni_kinect.so">
+          <baseline>0.2</baseline>
+          <alwaysOn>true</alwaysOn>
+          <!-- Keep this zero, update_rate in the parent <sensor> tag
+            will control the frame rate. -->
+          <updateRate>0.0</updateRate>
+          <cameraName>camera_ir</cameraName>
+          <imageTopicName>/camera_down/depth/color/image_raw</imageTopicName>
+          <cameraInfoTopicName>/camera_down/depth/color/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>/camera_down/depth/color/image_rect_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/camera_down/depth/color/camera_info</depthImageInfoTopicName>
+          <pointCloudTopicName>/camera_down/depth/color/points</pointCloudTopicName>
+          <frameName>camera_down_optical_frame</frameName>
+          <pointCloudCutoff>0.05</pointCloudCutoff>
+          <distortionK1>0.0012</distortionK1>
+          <distortionK2>0.0019</distortionK2>
+          <distortionK3>0.4</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>1</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>
+</gazebo>
+
+
+
+
+<!-- **********************Odometry Controller***************************** -->
+    <gazebo>
+      
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/syropod</robotNamespace>
+      </plugin>
+
+      <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>20.0</updateRate>
+            <bodyName>base_link</bodyName>
+            <topicName>/gazebo/Odometry</topicName>
+            <gaussianNoise>0.01</gaussianNoise>
+            <frameName>map</frameName>
+            <xyzOffsets>0 0 0</xyzOffsets>
+            <rpyOffsets>0 0 0</rpyOffsets>
+      </plugin>
+
+    </gazebo>
+
+
+
+<!-- ******************************************************************** -->
+
+  <transmission name="AL_coxa_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AL_coxa_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AL_coxa_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+    <transmission name="AL_coxat_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AL_coxat_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AL_coxat_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="AL_femur_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AL_femur_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AL_femur_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="AL_tibia_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AL_tibia_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AL_tibia_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="AL_tarsus_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AL_tarsus_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AL_tarsus_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="AR_coxa_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AR_coxa_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AR_coxa_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+    <transmission name="AR_coxat_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AR_coxat_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AR_coxat_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="AR_femur_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AR_femur_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AR_femur_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="AR_tibia_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AR_tibia_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AR_tibia_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="AR_tarsus_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="AR_tarsus_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="AR_tarsus_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="BL_coxa_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BL_coxa_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BL_coxa_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+    <transmission name="BL_coxat_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BL_coxat_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BL_coxat_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="BL_femur_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BL_femur_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BL_femur_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="BL_tibia_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BL_tibia_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BL_tibia_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="BL_tarsus_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BL_tarsus_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BL_tarsus_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="BR_coxa_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BR_coxa_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BR_coxa_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+    <transmission name="BR_coxat_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BR_coxat_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BR_coxat_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="BR_femur_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BR_femur_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BR_femur_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="BR_tibia_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BR_tibia_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BR_tibia_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="BR_tarsus_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BR_tarsus_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="BR_tarsus_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="CL_coxa_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CL_coxa_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CL_coxa_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+    <transmission name="CL_coxat_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CL_coxat_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CL_coxat_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="CL_femur_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CL_femur_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CL_femur_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="CL_tibia_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CL_tibia_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CL_tibia_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="CL_tarsus_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CL_tarsus_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CL_tarsus_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="CR_coxa_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CR_coxa_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CR_coxa_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+    <transmission name="CR_coxat_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CR_coxat_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CR_coxat_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="CR_femur_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CR_femur_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CR_femur_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="CR_tibia_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CR_tibia_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CR_tibia_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+  <transmission name="CR_tarsus_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+      <joint name="CR_tarsus_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="CR_tarsus_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AL_coxa">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AL_coxat">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AL_femur">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AL_tibia">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AL_tarsus">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <minDepth>0.005</minDepth>
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="BL_coxa">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BL_coxat">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BL_femur">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BL_tibia">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BL_tarsus">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <minDepth>0.005</minDepth>
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="CL_coxa">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CL_coxat">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CL_femur">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CL_tibia">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CL_tarsus">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <minDepth>0.005</minDepth>
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="AR_coxa">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AR_coxat">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AR_femur">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AR_tibia">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="AR_tarsus">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <minDepth>0.005</minDepth>
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="BR_coxa">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BR_coxat">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BR_femur">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BR_tibia">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BR_tarsus">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <minDepth>0.005</minDepth>
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="CR_coxa">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CR_coxat">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CR_femur">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CR_tibia">
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="CR_tarsus">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <minDepth>0.005</minDepth>
+    <dampingFactor>0.01</dampingFactor>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+
+<link name="imu_link">
+  <inertial>
+    <mass value="0.001"/>
+    <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
+    <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.0001"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size="0.02 0.01 0.01"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size="0.02 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+  <joint name="imu_joint" type="fixed">
+    <axis xyz="1 0 0"/> 
+    <origin xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+
+<gazebo>
+  <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+    <alwaysOn>true</alwaysOn>       
+    <bodyName>imu_link</bodyName>
+    <topicName>imu/data</topicName>
+    <serviceName>imu_service</serviceName>
+    <gaussianNoise>0.0</gaussianNoise>
+    <updateRate>0.0</updateRate> 
+  </plugin>
+</gazebo>
+
+
+
+</robot>
